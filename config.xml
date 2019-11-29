@@ -11,6 +11,4 @@
         <authority base-url="http://id.ndl.go.jp/auth/ndlna/" key="ndl"/>
         <authority base-url="http://www.geonames.org/|http://sws.geonames.org/" key="geonames"/>
     </authority-files>
-    <cmif-files>
-    </cmif-files>
 </csHarvester>

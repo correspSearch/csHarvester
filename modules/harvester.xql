@@ -12,11 +12,13 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 declare namespace httpclient="http://exist-db.org/xquery/httpclient";
 
 declare variable $csharv:config := doc('../config.xml')/csHarvester;
-declare variable $csharv:logs := '/apps/csHarvester/data/logs';
-declare variable $csharv:log-file := $csharv:logs||'/log.xml';
-declare variable $csharv:log := doc($csharv:log-file)/log;
 declare variable $csharv:data := '/apps/csHarvester/data/cmif-files';
 declare variable $csharv:reports := '/db/apps/csHarvester/data/reports';
+declare variable $csharv:cmif-file-index-path := '/db/apps/csHarvester/data/cmif-file-index.xml'; 
+declare variable $csharv:cmif-file-index := csharv:load-cmif-file-index();
+declare variable $csharv:logs := '/apps/csHarvester/data/logs';
+declare variable $csharv:log-file := $csharv:logs||'/log.xml';
+declare variable $csharv:log := csharv:load-logfile();
 declare variable $csharv:schema := xs:anyURI('../data/schema/cmif.rng');
 
 declare variable $csharv:loglevel := request:get-parameter('loglevel', 'default');
@@ -27,6 +29,22 @@ declare variable $csharv:debug := false();
 
 (: Logging :)
 
+declare function csharv:load-cmif-file-index() {
+    if (doc($csharv:cmif-file-index-path)/cmif-files)
+    then doc($csharv:cmif-file-index-path)/cmif-files
+    else 
+       (xmldb:store('/db/apps/csHarvester/data', 'cmif-file-index.xml', <cmif-files></cmif-files>),
+        doc($csharv:cmif-file-index-path)/cmif-files)
+};
+
+declare function csharv:load-logfile() {
+    if (doc($csharv:log-file)/log)
+    then doc($csharv:log-file)/log
+    else 
+       (xmldb:store($csharv:logs, 'log.xml', <log></log>),
+        doc($csharv:log-file)/log)
+};
+
 declare function csharv:startLog($type) {
     let $attributes :=
         if ($type='update-all')
@@ -36,7 +54,7 @@ declare function csharv:startLog($type) {
                 'validation-mode' : $csharv:validation,
                 'force-update' : $csharv:force,
                 'loglevel' : $csharv:loglevel,
-                'urls' : count($csharv:config//cmif-files/file),
+                'urls' : count($csharv:cmif-file-index//file),
                 'label' : 'Begin sequence to update all files' 
             }
         else if ($type='update')
@@ -204,7 +222,7 @@ declare function csharv:check($elements as element()*) as xs:boolean {
 
 declare function csharv:checkIfRegistered($url as xs:string) as xs:boolean {
     let $test :=
-        if ($csharv:config//file/@url=$url)
+        if ($csharv:cmif-file-index//file/@url=$url)
         then <error  type="alreadyRegistered" url="{$url}">URL already registered</error>
         else <trace url="{$url}">URL not yet registered</trace>
     return
@@ -314,9 +332,9 @@ declare function csharv:insert-file-entry($url as xs:string) {
             attribute url { $url },
             attribute added-when { current-dateTime() },
             attribute added-by { $current-user }
-        } into $csharv:config//cmif-files
+        } into doc($csharv:cmif-file-index-path)//cmif-files
     let $test :=
-        if ($csharv:config//file[@url=$url])
+        if ($csharv:cmif-file-index//file[@url=$url])
         then <status type="registered">File {$url} registered</status>
         else <error type="notRegistered">File {$url} NOT registered</error>
     return
@@ -400,7 +418,7 @@ declare function csharv:update($url) {
 
 declare function csharv:update-all() {
    (csharv:startLog('update-all'),
-    for $url at $pos in $csharv:config//file/@url
+    for $url at $pos in $csharv:cmif-file-index//file/@url
     let $log := <trace url="{$url}">Begin update all files</trace>
     return
     (csharv:write-log($log), csharv:get($url)),
@@ -427,11 +445,11 @@ declare function csharv:delete-file($url) {
 
 declare function csharv:delete-file-entry($url) {
 let $remove-entry :=
-    for $file-entry in doc('../config.xml')//file[@url=$url]
+    for $file-entry in $csharv:cmif-file-index//file[@url=$url]
     return
         update delete $file-entry
 let $test :=
-    if ($csharv:config//file[@url=$url])
+    if ($csharv:cmif-file-index//file[@url=$url])
     then <error type="failed" url="{$url}">Entry in file list NOT removed</error>
     else <trace url="{$url}">Entry in file list removed</trace>
 return
@@ -513,10 +531,18 @@ declare function csharv:createReport($url) {
             local:report-ids($file, 'orgName'),
             local:report-ids($file, 'placeName'))
     let $validation-report := csharv:getValidationReport($file)
+    let $editors := 
+        for $editor in $file//tei:titleStmt//tei:editor
+        return
+        <editor>
+            <name>{$editor/text()}</name>
+            <email>{$editor/tei:email/text()}</email>
+        </editor>
     return
     <report timestamp="{current-dateTime()}" id="{util:uuid()}">
         <file-id>{$url}</file-id>
         <file-title>{$file//tei:titleStmt/tei:title/text()}</file-title>
+        <file-editors>{$editors}</file-editors>
         <file-last-modified>{$file//tei:publicationStmt/tei:date/@when/data(.)}</file-last-modified>
         <file-stored>{if (collection($csharv:data)//tei:TEI[.//tei:idno=$url]) then 'yes' else 'no'}</file-stored>
         <validation>

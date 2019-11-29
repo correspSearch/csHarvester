@@ -107,7 +107,7 @@ declare %templates:wrap function app:last-actions($node as node(), $model as map
 
 declare %templates:wrap function app:last-registered($node as node(), $model as map(*)) as map(*) {
     map { "files" := 
-           (for $file in $csharv:config//file
+           (for $file in $csharv:cmif-file-index//file
             order by $file/@added-when descending
             return
             $file)[position() < 6]
@@ -273,7 +273,7 @@ declare %templates:wrap function app:action-entry-desc($node as node(), $model a
 (: Registered CMIF files :)
 
 declare %templates:wrap function app:cmif-files($node as node(), $model as map(*)) as map(*) {
-    map { "files" := doc($config:app-root||'/config.xml')//file }
+    map { "files" := doc($config:app-root||'/data/cmif-file-index.xml')//file }
 };
 
 declare %templates:wrap function app:cmif-file-url($node as node(), $model as map(*)) {
@@ -358,6 +358,10 @@ declare function app:report-title($node as node(), $model as map(*)) {
     let $url := $report/file-id/text()
     let $title := $report/file-title/text()
     let $last-modified := app:format-date($report/file-last-modified/text(), 'all')
+    let $editors := 
+        for $editor in $model("result")//file-editors/editor
+        return
+        <a href="mailto:{$editor/email/text()}">{$editor/name/text()}</a>    
     let $correspDesc := $model("result")//feature[@key='correspDesc']/@value/data(.)
     return
    (<h1>Report</h1>,
@@ -370,6 +374,10 @@ declare function app:report-title($node as node(), $model as map(*)) {
         <tr>
             <td>Title</td>
             <td>{$title}</td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td>{$editors}</td>
         </tr>
         <tr>
             <td>URL</td>
