@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report timestamp="2019-02-15T16:58:00.524+01:00" id="ec160763-22fe-41bd-b64d-d56d13f5891c">
+    <file-id>http://www.thomasgray.org/texts/letters/correspSearch.xml</file-id>
+    <file-title>Thomas Gray Archive : Texts : Letters - a TEI/XML-encoded edition</file-title>
+    <validation>
+        <report>
+            <status>valid</status>
+            <duration unit="msec">315</duration>
+        </report>
+    </validation>
+    <statistics>
+        <feature key="correspDesc" value="591"/>
+        <feature-set key="persName">
+            <feature key="all" value="1191"/>
+            <feature key="no-ref" value="200"/>
+            <feature key="no-ref-share" value="17"/>
+            <feature key="gnd" value="0"/>
+            <feature key="viaf" value="991"/>
+            <feature key="bnf" value="0"/>
+            <feature key="lc" value="0"/>
+            <feature key="ndl" value="0"/>
+            <feature key="non-supported" value="0"/>
+        </feature-set>
+        <feature-set key="orgName">
+            <feature key="all" value="0"/>
+            <feature key="no-ref" value="0"/>
+            <feature key="no-ref-share" value="-"/>
+            <feature key="gnd" value="0"/>
+            <feature key="viaf" value="0"/>
+            <feature key="bnf" value="0"/>
+            <feature key="lc" value="0"/>
+            <feature key="ndl" value="0"/>
+            <feature key="non-supported" value="0"/>
+        </feature-set>
+        <feature-set key="placeName">
+            <feature key="all" value="821"/>
+            <feature key="no-ref" value="43"/>
+            <feature key="no-ref-share" value="5"/>
+            <feature key="gnd" value="0"/>
+            <feature key="viaf" value="0"/>
+            <feature key="bnf" value="0"/>
+            <feature key="lc" value="0"/>
+            <feature key="ndl" value="0"/>
+            <feature key="non-supported" value="778"/>
+        </feature-set>
+    </statistics>
+</report>

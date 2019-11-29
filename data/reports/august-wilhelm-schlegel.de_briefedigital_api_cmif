@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report timestamp="2019-02-15T17:47:05.217+01:00" id="5bd27833-481d-439e-9e8e-af52cb431e5a">
+    <file-id>https://august-wilhelm-schlegel.de/briefedigital/api/cmif</file-id>
+    <file-title>Digitale Edition der Korrespondenz August Wilhelm Schlegels</file-title>
+    <file-last-modified>2019-02-15T17:46:51+01:00</file-last-modified>
+    <validation>
+        <report>
+            <status>invalid</status>
+            <duration unit="msec">1642</duration>
+            <message level="Error" line="8" column="35">element "forename" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="9" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="10" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="13" column="35">element "forename" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="14" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="15" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="18" column="35">element "forename" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="19" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="20" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="23" column="35">element "forename" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="24" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="25" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="28" column="27" repeat="4">element "respStmt" not allowed anywhere; expected the element end-tag or element "editor"</message>
+            <message level="Error" line="44" column="43">element "bibl" missing required attribute "type"</message>
+        </report>
+    </validation>
+    <statistics>
+        <feature key="correspDesc" value="5288"/>
+        <feature-set key="persName">
+            <feature key="all" value="11103"/>
+            <feature key="no-ref" value="650"/>
+            <feature key="no-ref-share" value="6"/>
+            <feature key="gnd" value="10453"/>
+            <feature key="viaf" value="0"/>
+            <feature key="bnf" value="0"/>
+            <feature key="lc" value="0"/>
+            <feature key="ndl" value="0"/>
+            <feature key="geonames" value="0"/>
+            <feature key="non-supported" value="0"/>
+        </feature-set>
+        <feature-set key="orgName">
+            <feature key="all" value="0"/>
+            <feature key="no-ref" value="0"/>
+            <feature key="no-ref-share" value="-"/>
+            <feature key="gnd" value="0"/>
+            <feature key="viaf" value="0"/>
+            <feature key="bnf" value="0"/>
+            <feature key="lc" value="0"/>
+            <feature key="ndl" value="0"/>
+            <feature key="geonames" value="0"/>
+            <feature key="non-supported" value="3"/>
+        </feature-set>
+        <feature-set key="placeName">
+            <feature key="all" value="8129"/>
+            <feature key="no-ref" value="34"/>
+            <feature key="no-ref-share" value="0"/>
+            <feature key="gnd" value="8095"/>
+            <feature key="viaf" value="0"/>
+            <feature key="bnf" value="0"/>
+            <feature key="lc" value="0"/>
+            <feature key="ndl" value="0"/>
+            <feature key="geonames" value="0"/>
+            <feature key="non-supported" value="0"/>
+        </feature-set>
+    </statistics>
+</report>

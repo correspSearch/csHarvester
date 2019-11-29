@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div data-template="app:actions">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Update all CMIF files</h2>
+                        <div data-template="app:action-alert-update"/>
+                        <form method="post">
+                            <input type="hidden" name="id" value="update-all"/>
+                            <div class="form-group">
+                                <label for="loglevel">Logelevel</label>
+                                <div>
+                                    <select class="form-control  form-control-sm" name="loglevel">
+                                        <option name="default">Default</option>
+                                        <option name="error">All</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="validation">Validation</label>
+                                <div>
+                                    <select class="form-control form-control-sm" name="validation">
+                                        <option name="yes" selected="selected">Yes</option>
+                                        <option name="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="validation">Force Update</label>
+                                <div>
+                                    <select class="form-control  form-control-sm" name="force">
+                                        <option name="yes">Yes</option>
+                                        <option name="no" selected="selected">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn cs-button">
+                                <i class="fas fa-sync-alt"/> Update all</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Register CMIF file</h2>
+                        <div data-template="app:action-alert-register"/>
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="url">URL</label>
+                                <div>
+                                    <input type="text" id="url" name="url" class="form-control form-control-sm"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn cs-button" name="id" value="register">
+                                    <i class="fas fa-pencil-alt"/> Register</button>
+                                <br/>
+                                <button type="submit" class="btn cs-button mt-2" name="id" value="register-retrieve">
+                                    <i class="fas fa-download"/> Register &amp; Retrieve</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-heading">
+                            <h2 class="card-title">Statistic</h2>
+                        </div>
+                        <table class="table" data-template="app:stat"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Log</h2>
+
+                        <div data-template="templates:if-parameter-set" data-template-param="success" class="alert alert-success">
+                            <p>Update successful</p>
+                        </div>
+
+                        <table class="table" data-template="app:last-actions">
+                            <tr>
+                                <th>Date</th>
+                                <!--<th>Time</th>-->
+                                <th>Type</th>
+                                <th>
+                                    <i class="fas fa-sync-alt"/>
+                                </th>
+                                <th>
+                                    <i class="fas fa-exclamation-triangle"/>
+                                </th>
+                                <th>
+                                    <i class="fas fa-file-alt fa-lg"/>
+                                </th>
+                            </tr>
+                            <tr data-template="templates:each" data-template-from="actions" data-template-to="action">
+                                <td data-template="app:log-action-date"/>
+                                <!--<td data-template="app:log-action-time"/>-->
+                                <td data-template="app:log-action-type"/>
+                                <td data-template="app:log-action-updated"/>
+                                <td data-template="app:log-action-errors"/>
+                                <td data-template="app:log-action-id"/>
+                            </tr>
+                        </table>
+                        <a href="log.html">See full log</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Last Registered</h2>
+                        <table class="table" data-template="app:last-registered">
+                            <tr>
+                                <th>URL</th>
+                            </tr>
+                            <tr data-template="templates:each" data-template-from="files" data-template-to="file">
+                                <td data-template="app:cmif-file-url"/>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Last Modified</h2>
+                        <table class="table" data-template="app:last-modified">
+                            <tr>
+                                <th>Date</th>
+                                <th>URL</th>
+                            </tr>
+                            <tr data-template="templates:each" data-template-from="teis" data-template-to="tei">
+                                <td data-template="app:last-modified-date"/>
+                                <td data-template="app:last-modified-url"/>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report timestamp="2019-02-15T17:30:21.216+01:00" id="c30f5ac0-7da4-4ff6-acc3-8799848e0bf9">
+    <file-id>https://sturm-edition.de/cmif/corresp.xml</file-id>
+    <file-title>DER STURM. Digitale Quellenedition zur Geschichte der internationalen Avantgarde, Abteilung I, Briefe.</file-title>
+    <validation>
+        <report>
+            <status>valid</status>
+            <duration unit="msec">71</duration>
+        </report>
+    </validation>
+    <statistics>
+        <feature key="correspDesc" value="109"/>
+        <feature-set key="persName">
+            <feature key="all" value="217"/>
+            <feature key="no-ref" value="0"/>
+            <feature key="no-ref-share" value="-"/>
+            <feature key="gnd" value="217"/>
+            <feature key="viaf" value="0"/>
+            <feature key="bnf" value="0"/>
+            <feature key="lc" value="0"/>
+            <feature key="ndl" value="0"/>
+            <feature key="geonames" value="0"/>
+            <feature key="non-supported" value="0"/>
+        </feature-set>
+        <feature-set key="orgName">
+            <feature key="all" value="0"/>
+            <feature key="no-ref" value="0"/>
+            <feature key="no-ref-share" value="-"/>
+            <feature key="gnd" value="0"/>
+            <feature key="viaf" value="0"/>
+            <feature key="bnf" value="0"/>
+            <feature key="lc" value="0"/>
+            <feature key="ndl" value="0"/>
+            <feature key="geonames" value="0"/>
+            <feature key="non-supported" value="0"/>
+        </feature-set>
+        <feature-set key="placeName">
+            <feature key="all" value="219"/>
+            <feature key="no-ref" value="26"/>
+            <feature key="no-ref-share" value="12"/>
+            <feature key="gnd" value="0"/>
+            <feature key="viaf" value="0"/>
+            <feature key="bnf" value="0"/>
+            <feature key="lc" value="0"/>
+            <feature key="ndl" value="0"/>
+            <feature key="geonames" value="199"/>
+            <feature key="non-supported" value="0"/>
+        </feature-set>
+    </statistics>
+</report>

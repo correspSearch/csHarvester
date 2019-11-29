@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div data-template="app:actions">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Log</h1>
+                    
+                    <div data-template="templates:if-parameter-set" data-template-param="success" class="alert alert-success">
+                        <p>Update successful</p>
+                    </div>
+                    
+                    <table class="table" data-template="app:log-actions">
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Type</th>
+                            <th>URLs</th>
+                            <th>Updated</th>
+                            <th>Errors</th>
+                            <th>notModified</th>
+                            <th>Validation Mode</th>
+                            <th>Force Update</th>
+                            <th>Link</th>
+                        </tr>
+                        <tr data-template="templates:each" data-template-from="actions" data-template-to="action">
+                            <td data-template="app:log-action-date"/>
+                            <td data-template="app:log-action-time"/>
+                            <td data-template="app:log-action-type"/>
+                            <td data-template="app:log-action-urls"/>
+                            <td data-template="app:log-action-updated"/>
+                            <td data-template="app:log-action-errors"/>
+                            <td data-template="app:log-action-notModified"/>
+                            <td data-template="app:log-action-validation-mode"/>
+                            <td data-template="app:log-action-force-update"/>
+                            <td data-template="app:log-action-id"/>
+                        </tr>
+                    </table>
+                    
+                    <a href="?id=clear-log" class="btn cs-button">
+                        <i class="fa fa-refresh" aria-hidden="true"/> Clear Log </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

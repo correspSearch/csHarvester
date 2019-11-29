@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+<action id="00c32b68-4410-45bc-bdea-df2453c8c594">
+        <start timestamp="2019-02-15T16:59:33.19+01:00" loglevel="Default" urls="8" force-update="No" validation-mode="Yes" type="update-all">Begin sequence to update all files</start>
+        <trace timestamp="2019-02-15T16:59:33.194+01:00" url="http://telotadev.bbaw.de/oxygen/cmif-validated.xml">Begin update all files</trace>
+        <trace timestamp="2019-02-15T16:59:33.198+01:00" url="http://telotadev.bbaw.de/oxygen/cmif-validated.xml">URL okay</trace>
+        <trace timestamp="2019-02-15T16:59:33.203+01:00" url="http://telotadev.bbaw.de/oxygen/cmif-validated.xml">Status code: 200</trace>
+        <trace timestamp="2019-02-15T16:59:33.22+01:00" url="http://telotadev.bbaw.de/oxygen/cmif-validated.xml">Wellformed</trace>
+        <trace timestamp="2019-02-15T16:59:33.285+01:00" url="http://telotadev.bbaw.de/oxygen/cmif-validated.xml">Validated</trace>
+        <status timestamp="2019-02-15T16:59:33.291+01:00" type="notModified" url="http://telotadev.bbaw.de/oxygen/cmif-validated.xml">Not modified</status>
+        <trace timestamp="2019-02-15T16:59:33.292+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Boussingault.xml">Begin update all files</trace>
+        <trace timestamp="2019-02-15T16:59:33.292+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Boussingault.xml">URL okay</trace>
+        <trace timestamp="2019-02-15T16:59:33.365+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Boussingault.xml">Status code: 200</trace>
+        <trace timestamp="2019-02-15T16:59:33.396+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Boussingault.xml">Wellformed</trace>
+        <error timestamp="2019-02-15T16:59:33.501+01:00" type="validationFailed" url="http://correspSearch.bbaw.de/storage/Humboldt-Boussingault.xml">Validation of http://correspSearch.bbaw.de/storage/Humboldt-Boussingault.xml failed</error>
+        <report>
+            <status>invalid</status>
+            <duration unit="msec">82</duration>
+            <message level="Error" line="1457" column="18" repeat="2">element "div" not allowed anywhere; expected element "bibl", "note" or "p"</message>
+            <message level="Error" line="1460" column="16">element "body" incomplete; expected element "bibl", "note" or "p"</message>
+        </report>
+        <trace timestamp="2019-02-15T16:59:33.502+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">Begin update all files</trace>
+        <trace timestamp="2019-02-15T16:59:33.503+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">URL okay</trace>
+        <trace timestamp="2019-02-15T16:59:33.515+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">Status code: 200</trace>
+        <trace timestamp="2019-02-15T16:59:33.531+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">Wellformed</trace>
+        <trace timestamp="2019-02-15T16:59:33.579+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">Validated</trace>
+        <status timestamp="2019-02-15T16:59:33.593+01:00" type="notModified" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">Not modified</status>
+        <trace timestamp="2019-02-15T16:59:33.594+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Ritter.xml">Begin update all files</trace>
+        <trace timestamp="2019-02-15T16:59:33.594+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Ritter.xml">URL okay</trace>
+        <trace timestamp="2019-02-15T16:59:33.607+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Ritter.xml">Status code: 200</trace>
+        <trace timestamp="2019-02-15T16:59:33.654+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Ritter.xml">Wellformed</trace>
+        <trace timestamp="2019-02-15T16:59:33.837+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Ritter.xml">Validated</trace>
+        <status timestamp="2019-02-15T16:59:33.872+01:00" type="notModified" url="http://correspSearch.bbaw.de/storage/Humboldt-Ritter.xml">Not modified</status>
+        <trace timestamp="2019-02-15T16:59:33.873+01:00" url="http://correspsearch.bbaw.de/storage/HumboldtVarnhagen.xml">Begin update all files</trace>
+        <trace timestamp="2019-02-15T16:59:33.873+01:00" url="http://correspsearch.bbaw.de/storage/HumboldtVarnhagen.xml">URL okay</trace>
+        <trace timestamp="2019-02-15T16:59:33.885+01:00" url="http://correspsearch.bbaw.de/storage/HumboldtVarnhagen.xml">Status code: 200</trace>
+        <trace timestamp="2019-02-15T16:59:33.928+01:00" url="http://correspsearch.bbaw.de/storage/HumboldtVarnhagen.xml">Wellformed</trace>
+        <trace timestamp="2019-02-15T16:59:34.096+01:00" url="http://correspsearch.bbaw.de/storage/HumboldtVarnhagen.xml">Validated</trace>
+        <status timestamp="2019-02-15T16:59:34.132+01:00" type="notModified" url="http://correspsearch.bbaw.de/storage/HumboldtVarnhagen.xml">Not modified</status>
+        <trace timestamp="2019-02-15T16:59:34.135+01:00" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">Begin update all files</trace>
+        <trace timestamp="2019-02-15T16:59:34.136+01:00" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">URL okay</trace>
+        <trace timestamp="2019-02-15T16:59:34.457+01:00" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">Status code: 200</trace>
+        <trace timestamp="2019-02-15T16:59:35.036+01:00" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">Wellformed</trace>
+        <trace timestamp="2019-02-15T16:59:36.992+01:00" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">Validated</trace>
+        <status timestamp="2019-02-15T16:59:37.407+01:00" type="notModified" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">Not modified</status>
+        <trace timestamp="2019-02-15T16:59:37.408+01:00" url="http://correspSearch.net/storage/AvH-USA.xml">Begin update all files</trace>
+        <trace timestamp="2019-02-15T16:59:37.408+01:00" url="http://correspSearch.net/storage/AvH-USA.xml">URL okay</trace>
+        <trace timestamp="2019-02-15T16:59:37.42+01:00" url="http://correspSearch.net/storage/AvH-USA.xml">Status code: 200</trace>
+        <trace timestamp="2019-02-15T16:59:37.468+01:00" url="http://correspSearch.net/storage/AvH-USA.xml">Wellformed</trace>
+        <trace timestamp="2019-02-15T16:59:37.662+01:00" url="http://correspSearch.net/storage/AvH-USA.xml">Validated</trace>
+        <status timestamp="2019-02-15T16:59:37.703+01:00" type="notModified" url="http://correspSearch.net/storage/AvH-USA.xml">Not modified</status>
+        <trace timestamp="2019-02-15T16:59:37.704+01:00" url="http://www.thomasgray.org/texts/letters/correspSearch.xml">Begin update all files</trace>
+        <trace timestamp="2019-02-15T16:59:37.704+01:00" url="http://www.thomasgray.org/texts/letters/correspSearch.xml">URL okay</trace>
+        <trace timestamp="2019-02-15T16:59:37.803+01:00" url="http://www.thomasgray.org/texts/letters/correspSearch.xml">Status code: 200</trace>
+        <trace timestamp="2019-02-15T16:59:38.023+01:00" url="http://www.thomasgray.org/texts/letters/correspSearch.xml">Wellformed</trace>
+        <trace timestamp="2019-02-15T16:59:38.492+01:00" url="http://www.thomasgray.org/texts/letters/correspSearch.xml">Validated</trace>
+        <status timestamp="2019-02-15T16:59:38.595+01:00" type="notModified" url="http://www.thomasgray.org/texts/letters/correspSearch.xml">Not modified</status>
+        <end timestamp="2019-02-15T16:59:38.597+01:00" urls="8" errors="1" duration="5.406" updated="0" notModified="7">End update sequence</end>
+    </action>
+    <action id="dc60a55f-d311-451b-ba81-ac776ffed89d">
+        <start timestamp="2019-02-15T17:00:53.068+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-15T17:00:53.908+01:00" type="registered">File http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml registered</status>
+        <end timestamp="2019-02-15T17:00:53.91+01:00" urls="1" errors="0" duration="0.841" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="c57d7210-75f8-4097-9e91-1e6b10821129">
+        <start timestamp="2019-02-15T17:01:07.478+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <error timestamp="2019-02-15T17:01:07.955+01:00" type="notWellformed" url="http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml">XML document http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml is not wellformed</error>
+        <end timestamp="2019-02-15T17:01:07.959+01:00" urls="1" errors="1" duration="0.478" updated="0" notModified="0">End update sequence</end>
+    </action>
+    <action id="8acb963c-6c62-4b79-9a50-fbce44cf1113">
+        <start timestamp="2019-02-15T17:01:12.598+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <error timestamp="2019-02-15T17:01:13.04+01:00" type="notWellformed" url="http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml">XML document http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml is not wellformed</error>
+        <end timestamp="2019-02-15T17:01:13.042+01:00" urls="1" errors="1" duration="0.443" updated="0" notModified="0">End update sequence</end>
+    </action>
+    <action id="41805e88-15a3-4df7-a8e0-1921ffa8535c">
+        <start timestamp="2019-02-15T17:02:29.458+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <error timestamp="2019-02-15T17:02:30.025+01:00" type="notWellformed" url="http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml">XML document http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml is not wellformed</error>
+        <end timestamp="2019-02-15T17:02:30.03+01:00" urls="1" errors="1" duration="0.568" updated="0" notModified="0">End update sequence</end>
+    </action>
+    <action id="24a21d00-bcbc-43b6-8398-aafcf25c4a0b">
+        <start timestamp="2019-02-15T17:02:35.534+01:00" type="report">Start creating report</start>
+    </action>
+    <action id="5ab72d1c-bc8b-4f3e-9ed7-70b96420ec02">
+        <start timestamp="2019-02-15T17:19:19.352+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+    </action>
+    <action id="7a953cb3-984b-4cc3-a1d2-95fd88c0b4d7">
+        <start timestamp="2019-02-15T17:20:22.114+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+    </action>
+    <action id="4f5d588b-8e70-4807-b672-59d98bd386d8">
+        <start timestamp="2019-02-15T17:23:30.565+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+    </action>
+    <action id="6a4efb86-dd74-49c8-a56b-3e413805e536">
+        <start timestamp="2019-02-15T17:24:07.532+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+    </action>
+    <action id="993e002c-2fcd-4283-a41c-842738b5fc7d">
+        <start timestamp="2019-02-15T17:24:56.634+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <error timestamp="2019-02-15T17:24:58.327+01:00" type="notWellformed" url="http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml">XML document http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml is not wellformed</error>
+        <end timestamp="2019-02-15T17:24:58.329+01:00" urls="1" errors="1" duration="1.694" updated="0" notModified="0">End update sequence</end>
+    </action>
+    <action id="ca0e6c2d-beaf-4023-ae5b-27dfab766e89">
+        <start timestamp="2019-02-15T17:25:43.022+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <error timestamp="2019-02-15T17:25:44.325+01:00" type="validationFailed" url="http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml">Validation of http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml failed</error>
+        <report>
+            <status>invalid</status>
+            <duration unit="msec">432</duration>
+            <message level="Error" line="1" column="6">element "TEI" not allowed anywhere; expected element "TEI" (with xmlns="http://www.tei-c.org/ns/1.0")</message>
+        </report>
+        <end timestamp="2019-02-15T17:25:44.329+01:00" urls="1" errors="1" duration="1.305" updated="0" notModified="0">End update sequence</end>
+    </action>
+    <action id="5c21466d-1b89-4c7d-8f48-a164435a8796">
+        <start timestamp="2019-02-15T17:26:09.146+01:00" type="report">Start creating report</start>
+    </action>
+    <action id="ea1597fc-9c33-4f5b-b11d-d3e2cece57c7">
+        <start timestamp="2019-02-15T17:26:17.661+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T17:26:17.662+01:00" type="failed" url="http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T17:26:17.666+01:00" urls="1" errors="1" duration="0.003" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="1ccb3323-a552-416c-a221-d2197038defd">
+        <start timestamp="2019-02-15T17:27:24.844+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-15T17:27:24.935+01:00" type="registered">File https://sturm-edition.de/cmif/corresp.xml registered</status>
+        <end timestamp="2019-02-15T17:27:24.938+01:00" urls="1" errors="0" duration="0.093" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="cd388c81-84f2-414b-aad7-6721532f0174">
+        <start timestamp="2019-02-15T17:27:36.051+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-02-15T17:27:36.457+01:00" type="stored" url="https://sturm-edition.de/cmif/corresp.xml">Successful stored</status>
+        <end timestamp="2019-02-15T17:27:36.466+01:00" urls="1" errors="0" duration="0.411" updated="1" notModified="0">End update sequence</end>
+    </action>
+    <action id="ef5ab384-07c2-4f4a-bf8c-3c5053ff22e1">
+        <start timestamp="2019-02-15T17:28:36.923+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-02-15T17:28:37.345+01:00" type="stored" url="https://sturm-edition.de/cmif/corresp.xml">Successful stored</status>
+        <end timestamp="2019-02-15T17:28:37.346+01:00" urls="1" errors="0" duration="0.423" updated="1" notModified="0">End update sequence</end>
+    </action>
+    <action id="eabad376-a498-4993-b0b6-5629cf38a8c4">
+        <start timestamp="2019-02-15T17:28:39.441+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-02-15T17:28:39.692+01:00" type="notModified" url="https://sturm-edition.de/cmif/corresp.xml">Not modified</status>
+        <end timestamp="2019-02-15T17:28:39.694+01:00" urls="1" errors="0" duration="0.253" updated="0" notModified="1">End update sequence</end>
+    </action>
+    <action id="3bc87aa3-501c-4c34-b78f-59c106dbcc24">
+        <start timestamp="2019-02-15T17:28:53.5+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T17:28:53.747+01:00" type="storedReport" url="https://sturm-edition.de/cmif/corresp.xml">Report successfully stored</status>
+        <end timestamp="2019-02-15T17:28:53.748+01:00" type="report">End creating report</end>
+    </action>
+    <action id="16256a7d-430d-4d49-b5ac-06ccfd6a0121">
+        <start timestamp="2019-02-15T17:30:20.939+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T17:30:21.223+01:00" type="storedReport" url="https://sturm-edition.de/cmif/corresp.xml">Report successfully stored</status>
+        <end timestamp="2019-02-15T17:30:21.223+01:00" type="report">End creating report</end>
+    </action>
+    <action id="63e0c772-84d4-4414-a744-a9854467d108">
+        <start timestamp="2019-02-15T17:33:11.702+01:00" type="register">Start register sequence</start>
+        <error timestamp="2019-02-15T17:33:11.93+01:00" type="wrongStatusCode" url="http://edirom.de/lortzing-cmif.xml">Wrong status code: 404 for http://edirom.de/lortzing-cmif.xml</error>
+        <end timestamp="2019-02-15T17:33:11.939+01:00" urls="1" errors="1" duration="0.23" updated="0" notModified="-">End register sequence</end>
+    </action>
+    <action id="092f0a8e-3032-4a7e-9984-9a51c798dc81">
+        <start timestamp="2019-02-15T17:35:14.396+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-15T17:35:14.403+01:00" type="registered">File http://www.deutschestextarchiv.de/sanders-briefe/cs.xml registered</status>
+        <end timestamp="2019-02-15T17:35:14.41+01:00" urls="1" errors="0" duration="0.007" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="ec86c145-3d6c-44b4-921f-758146e20b32">
+        <start timestamp="2019-02-15T17:35:25.982+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-02-15T17:35:26.149+01:00" type="stored" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Successful stored</status>
+        <end timestamp="2019-02-15T17:35:26.152+01:00" urls="1" errors="0" duration="0.168" updated="1" notModified="0">End update sequence</end>
+    </action>
+    <action id="ab4c2f29-363f-4660-bff4-b03f29295e7e">
+        <start timestamp="2019-02-15T17:35:29.304+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T17:35:29.466+01:00" type="storedReport" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Report successfully stored</status>
+        <end timestamp="2019-02-15T17:35:29.467+01:00" type="report">End creating report</end>
+    </action>
+    <action id="3a847703-0aaf-4637-a2ba-e6a3077dd871">
+        <start timestamp="2019-02-15T17:37:56.038+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T17:37:56.188+01:00" type="storedReport" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Report successfully stored</status>
+        <end timestamp="2019-02-15T17:37:56.189+01:00" type="report">End creating report</end>
+    </action>
+    <action id="848a1a77-1da3-49de-b04a-1d3e046a10ed">
+        <start timestamp="2019-02-15T17:39:55.104+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T17:39:55.266+01:00" type="storedReport" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Report successfully stored</status>
+        <end timestamp="2019-02-15T17:39:55.267+01:00" type="report">End creating report</end>
+    </action>
+    <action id="21c6d253-45ad-4350-a7bb-9e5169a89455">
+        <start timestamp="2019-02-15T17:40:28.91+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T17:40:29.046+01:00" type="storedReport" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Report successfully stored</status>
+        <end timestamp="2019-02-15T17:40:29.047+01:00" type="report">End creating report</end>
+    </action>
+    <action id="46ea6ba5-d428-4280-80ad-c1bd23c9ad7e">
+        <start timestamp="2019-02-15T17:44:34.613+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-15T17:44:46.515+01:00" type="registered">File https://august-wilhelm-schlegel.de/briefedigital/api/cmif registered</status>
+        <end timestamp="2019-02-15T17:44:46.52+01:00" urls="1" errors="0" duration="11.903" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="6d011c04-51ea-4b07-b6f3-a941b4aabf96">
+        <start timestamp="2019-02-15T17:45:06.978+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <error timestamp="2019-02-15T17:46:11.558+01:00" type="validationFailed" url="https://august-wilhelm-schlegel.de/briefedigital/api/cmif">Validation of https://august-wilhelm-schlegel.de/briefedigital/api/cmif failed</error>
+        <report>
+            <status>invalid</status>
+            <duration unit="msec">1799</duration>
+            <message level="Error" line="8" column="35">element "forename" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="9" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="10" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="13" column="35">element "forename" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="14" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="15" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="18" column="35">element "forename" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="19" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="20" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="23" column="35">element "forename" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="24" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="25" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="28" column="27" repeat="4">element "respStmt" not allowed anywhere; expected the element end-tag or element "editor"</message>
+            <message level="Error" line="44" column="43">element "bibl" missing required attribute "type"</message>
+        </report>
+        <end timestamp="2019-02-15T17:46:11.56+01:00" urls="1" errors="1" duration="64.582" updated="0" notModified="0">End update sequence</end>
+    </action>
+    <action id="0b6e5666-a698-4155-846f-91561c1c8ee8">
+        <start timestamp="2019-02-15T17:46:49.69+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T17:47:05.227+01:00" type="storedReport" url="https://august-wilhelm-schlegel.de/briefedigital/api/cmif">Report successfully stored</status>
+        <end timestamp="2019-02-15T17:47:05.227+01:00" type="report">End creating report</end>
+    </action>
+    <action id="2343b103-8f3c-4a7a-b00f-5167264a2b21">
+        <start timestamp="2019-02-15T17:47:28.688+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-15T17:47:28.809+01:00" type="registered">File http://www.richard-strauss-ausgabe.de/export/cmif.xml registered</status>
+        <end timestamp="2019-02-15T17:47:28.814+01:00" urls="1" errors="0" duration="0.122" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="cf7453b5-2442-4587-a5a7-55f30afdf497">
+        <start timestamp="2019-02-15T17:47:39.756+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-02-15T17:47:40.041+01:00" type="stored" url="http://www.richard-strauss-ausgabe.de/export/cmif.xml">Successful stored</status>
+        <end timestamp="2019-02-15T17:47:40.045+01:00" urls="1" errors="0" duration="0.288" updated="1" notModified="0">End update sequence</end>
+    </action>
+    <action id="18d0ce4f-8df0-40a5-9dae-80e035ae9906">
+        <start timestamp="2019-02-15T17:47:48.329+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T17:47:48.6+01:00" type="storedReport" url="http://www.richard-strauss-ausgabe.de/export/cmif.xml">Report successfully stored</status>
+        <end timestamp="2019-02-15T17:47:48.601+01:00" type="report">End creating report</end>
+    </action>
+<action id="450c5a9b-bdcc-43de-987f-942b79c96397">
+        <start timestamp="2019-02-15T19:41:23.151+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-15T19:41:24.04+01:00" type="registered">File https://www.bach-digital.de/letters/BachLetters.xml registered</status>
+        <end timestamp="2019-02-15T19:41:24.052+01:00" urls="1" errors="0" duration="0.891" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="15e5c849-df6e-4dc0-93f7-1eb11b9134df">
+        <start timestamp="2019-02-15T19:41:40.612+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-02-15T19:41:47.88+01:00" type="stored" url="https://www.bach-digital.de/letters/BachLetters.xml">Successful stored</status>
+        <end timestamp="2019-02-15T19:41:47.89+01:00" urls="1" errors="0" duration="7.277" updated="1" notModified="0">End update sequence</end>
+    </action>
+    <action id="3c2a3ea9-c798-4358-ba64-b09468f69d55">
+        <start timestamp="2019-02-15T19:41:50.914+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T19:41:52.674+01:00" type="storedReport" url="https://www.bach-digital.de/letters/BachLetters.xml">Report successfully stored</status>
+        <end timestamp="2019-02-15T19:41:52.674+01:00" type="report">End creating report</end>
+    </action>
+    <action id="4292f2b2-aede-48c4-b74a-20bc657644a8">
+        <start timestamp="2019-02-15T19:55:18.688+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-15T19:55:18.863+01:00" type="registered">File http://diglib.hab.de/edoc/ed000213/download/cmi.xml registered</status>
+        <end timestamp="2019-02-15T19:55:18.873+01:00" urls="1" errors="0" duration="0.181" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="ecc7bb27-958f-4ac5-b0b8-6129ea65c0b1">
+        <start timestamp="2019-02-15T19:55:27.603+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-02-15T19:55:28.543+01:00" type="stored" url="http://diglib.hab.de/edoc/ed000213/download/cmi.xml">Successful stored</status>
+        <end timestamp="2019-02-15T19:55:28.557+01:00" urls="1" errors="0" duration="0.94" updated="1" notModified="0">End update sequence</end>
+    </action>
+    <action id="985ae378-62ad-4222-ae7d-338c01015e95">
+        <start timestamp="2019-02-15T19:55:31.306+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T19:55:31.7+01:00" type="storedReport" url="http://diglib.hab.de/edoc/ed000213/download/cmi.xml">Report successfully stored</status>
+        <end timestamp="2019-02-15T19:55:31.704+01:00" type="report">End creating report</end>
+    </action>
+    <action id="247ee5b3-2cb6-40e0-bc13-fd894af8c478">
+        <start timestamp="2019-02-15T20:00:05.618+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-15T20:00:05.978+01:00" type="registered">File http://www.cartas-de-ultramar.net/ registered</status>
+        <end timestamp="2019-02-15T20:00:05.986+01:00" urls="1" errors="0" duration="0.368" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="308af2da-9f8d-4c8b-bc1f-7296d281392f">
+        <start timestamp="2019-02-15T20:00:18.003+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <error timestamp="2019-02-15T20:00:18.506+01:00" type="notWellformed" url="http://www.cartas-de-ultramar.net/">XML document http://www.cartas-de-ultramar.net/ is not wellformed</error>
+        <end timestamp="2019-02-15T20:00:18.512+01:00" urls="1" errors="1" duration="0.503" updated="0" notModified="0">End update sequence</end>
+    </action>
+    <action id="e56aef94-9a25-4c9a-857f-6ee6a5c15027">
+        <start timestamp="2019-02-15T20:00:23.011+01:00" type="report">Start creating report</start>
+    </action>
+    <action id="c5f77b0e-5e9a-4922-b700-eaad7c934868">
+        <start timestamp="2019-02-15T20:01:58.293+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:01:58.293+01:00" type="failed" url="http://www.cartas-de-ultramar.net/">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:01:58.324+01:00" urls="1" errors="1" duration="0.031" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="2a3f2f5c-28f1-4b5a-b82f-603dff05aff6">
+        <start timestamp="2019-02-15T20:03:09.633+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-15T20:03:09.781+01:00" type="registered">File http://www.spohr-briefe.de/SpohrTEI.xml registered</status>
+        <end timestamp="2019-02-15T20:03:09.781+01:00" urls="1" errors="0" duration="0.148" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="970388e6-97d3-4c73-b731-bc25e952d22b">
+        <start timestamp="2019-02-15T20:03:13.188+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <error timestamp="2019-02-15T20:03:16.073+01:00" type="notWellformed" url="http://www.spohr-briefe.de/SpohrTEI.xml">XML document http://www.spohr-briefe.de/SpohrTEI.xml is not wellformed</error>
+        <end timestamp="2019-02-15T20:03:16.078+01:00" urls="1" errors="1" duration="2.885" updated="0" notModified="0">End update sequence</end>
+    </action>
+    <action id="e46f37d4-ba2a-4c9f-b926-4e2300d90246">
+        <start timestamp="2019-02-15T20:05:22.169+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-15T20:05:22.657+01:00" type="registered">File http://gams.uni-graz.at/context:bom/CMIF registered</status>
+        <end timestamp="2019-02-15T20:05:22.664+01:00" urls="1" errors="0" duration="0.495" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="74905d24-3a24-44fa-9f5d-1d8f2b51de7a">
+        <start timestamp="2019-02-15T20:05:28.801+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:05:28.803+01:00" type="failed" url="http://www.spohr-briefe.de/SpohrTEI.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:05:28.807+01:00" urls="1" errors="1" duration="0.005" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="7d57f090-64e2-474a-bf67-759528087262">
+        <start timestamp="2019-02-15T20:05:34.519+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+    </action>
+    <action id="1568517d-533f-450d-82d0-f44774bfb8c5">
+        <start timestamp="2019-02-15T20:09:46.199+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:09:46.2+01:00" type="failed" url="http://gams.uni-graz.at/context:bom/CMIF">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:09:46.204+01:00" urls="1" errors="1" duration="0.004" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="9205b6c8-c82e-43fa-bb5c-4e8ab5caeb62">
+        <start timestamp="2019-02-15T20:09:59.206+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-15T20:09:59.362+01:00" type="registered">File http://julius-pflug.uni-goettingen.de/julius-pflug5.xml registered</status>
+        <end timestamp="2019-02-15T20:09:59.371+01:00" urls="1" errors="0" duration="0.156" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="8d064ca1-f732-40d0-87ef-7988dd0a6287">
+        <start timestamp="2019-02-15T20:10:07.785+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:10:07.79+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:10:07.793+01:00" urls="1" errors="1" duration="0.008" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="09745ec6-6fb4-4265-a7d8-5ee03700abdd">
+        <start timestamp="2019-02-15T20:12:11.347+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:12:11.364+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:12:11.364+01:00" urls="1" errors="1" duration="0.017" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="70b43aa3-e1f0-4610-ae9a-51c99faec89b">
+        <start timestamp="2019-02-15T20:12:14.567+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:12:14.57+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:12:14.573+01:00" urls="1" errors="1" duration="0.005" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="41583768-0f1c-4689-9433-2902a61b3b87">
+        <start timestamp="2019-02-15T20:12:15.281+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:12:15.29+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:12:15.299+01:00" urls="1" errors="1" duration="0.013" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="0638ca37-2a6d-40dc-a4cc-7b818b37d29e">
+        <start timestamp="2019-02-15T20:13:34.58+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:13:34.581+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:13:34.59+01:00" urls="1" errors="1" duration="0.001" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="938b798e-8f3a-478e-889f-663da8665cfc">
+        <start timestamp="2019-02-15T20:14:43.34+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:14:43.352+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:14:43.355+01:00" urls="1" errors="1" duration="0.015" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="eaff9163-0b4d-4961-a95a-73025a8b5a7a">
+        <start timestamp="2019-02-15T20:16:09.527+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:16:09.529+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:16:09.532+01:00" urls="1" errors="1" duration="0.004" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="37977272-07a1-43cb-8327-1269592dbecd">
+        <start timestamp="2019-02-15T20:16:18.501+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:16:18.502+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:16:18.503+01:00" urls="1" errors="1" duration="0.002" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="62a70bbb-3fa2-4baf-ae1c-5aec54d26157">
+        <start timestamp="2019-02-15T20:16:24.176+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:16:24.176+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:16:24.176+01:00" urls="1" errors="1" duration="0" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="fcf3b346-3a24-43b3-9b41-781ae1cb8239">
+        <start timestamp="2019-02-15T20:16:37.807+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-15T20:16:37.918+01:00" type="registered">File http://julius-pflug.uni-goettingen.de/julius-pflug5.xml registered</status>
+        <end timestamp="2019-02-15T20:16:37.921+01:00" urls="1" errors="0" duration="0.114" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="fc796faa-027a-46fc-81c6-395dbe57f9dd">
+        <start timestamp="2019-02-15T20:16:43.609+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:16:43.609+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:16:43.609+01:00" urls="1" errors="1" duration="0" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="a782d3e6-c9b1-46db-a189-42e7c4862a0c">
+        <start timestamp="2019-02-15T20:18:35.59+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:18:35.594+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:18:35.596+01:00" urls="1" errors="1" duration="0.006" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="859f48ff-451a-4d52-a449-245eee348b52">
+        <start timestamp="2019-02-15T20:18:43.619+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:18:43.62+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:18:43.621+01:00" urls="1" errors="1" duration="0.002" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="ffa42cdd-08b2-40b6-97b3-01a9c204ba90">
+        <start timestamp="2019-02-15T20:19:04.404+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:19:04.41+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:19:04.412+01:00" urls="1" errors="1" duration="0.007" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="e729ff2b-f19f-4a9f-95e0-33f978c1261b">
+        <start timestamp="2019-02-15T20:22:39.817+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:22:39.821+01:00" type="failed" url="http://julius-pflug.uni-goettingen.de/julius-pflug5.xml">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:22:39.823+01:00" urls="1" errors="1" duration="0.006" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="9c6068a0-56c1-4cd4-8402-48d8220d0332">
+        <start timestamp="2019-02-15T20:22:52.339+01:00" type="deregister">Start deregister sequence</start>
+        <error timestamp="2019-02-15T20:22:52.339+01:00" type="failed" url="https://august-wilhelm-schlegel.de/briefedigital/api/cmif">File  NOT available in DB</error>
+        <end timestamp="2019-02-15T20:22:52.356+01:00" urls="1" errors="1" duration="0.016" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="98b4f55e-02c9-443a-a131-c7cc39909027">
+        <start timestamp="2019-02-15T20:23:03.638+01:00" type="deregister">Start deregister sequence</start>
+        <status timestamp="2019-02-15T20:23:03.655+01:00" type="deleted" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">File deleted in DB </status>
+        <end timestamp="2019-02-15T20:23:03.66+01:00" urls="1" errors="0" duration="0.022" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="b4148017-eae2-416a-a76f-b435bc98300c">
+        <start timestamp="2019-02-15T20:23:10.559+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-15T20:23:10.659+01:00" type="registered">File http://www.deutschestextarchiv.de/sanders-briefe/cs.xml registered</status>
+        <end timestamp="2019-02-15T20:23:10.659+01:00" urls="1" errors="0" duration="0.1" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="98601e84-2ee9-43e3-bda3-df202fbdf031">
+        <start timestamp="2019-02-15T20:23:59.7+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-02-15T20:24:00.915+01:00" type="stored" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Successful stored</status>
+        <end timestamp="2019-02-15T20:24:00.915+01:00" urls="1" errors="0" duration="1.215" updated="1" notModified="0">End update sequence</end>
+    </action>
+    <action id="5e8bfc34-35ac-4907-a658-ff6ac13f51bf">
+        <start timestamp="2019-02-15T20:26:35.895+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-02-15T20:26:36.795+01:00" type="notModified" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Not modified</status>
+        <end timestamp="2019-02-15T20:26:36.798+01:00" urls="1" errors="0" duration="0.902" updated="0" notModified="1">End update sequence</end>
+    </action>
+    <action id="40e10e57-8dac-439a-9ffb-08ea4b8fe068">
+        <start timestamp="2019-02-15T20:28:10.376+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T20:28:11.051+01:00" type="storedReport" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Report successfully stored</status>
+        <end timestamp="2019-02-15T20:28:11.051+01:00" type="report">End creating report</end>
+    </action>
+    <action id="3a06d4fa-b9a0-4677-bd7c-b4b3037c5349">
+        <start timestamp="2019-02-15T20:28:31.716+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T20:28:32.238+01:00" type="storedReport" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Report successfully stored</status>
+        <end timestamp="2019-02-15T20:28:32.238+01:00" type="report">End creating report</end>
+    </action>
+    <action id="382a7f96-b573-434a-9e96-124f2af20743">
+        <start timestamp="2019-02-15T20:28:41.248+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T20:28:41.839+01:00" type="storedReport" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Report successfully stored</status>
+        <end timestamp="2019-02-15T20:28:41.841+01:00" type="report">End creating report</end>
+    </action>
+    <action id="818e371d-442e-45a6-9e2d-e53b8999d4be">
+        <start timestamp="2019-02-15T20:29:14.109+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-15T20:29:14.581+01:00" type="storedReport" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Report successfully stored</status>
+        <end timestamp="2019-02-15T20:29:14.581+01:00" type="report">End creating report</end>
+    </action>
+    <action id="ab981612-2819-4c57-8edd-1548f9c63c66">
+        <start timestamp="2019-02-16T10:38:51.312+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-02-16T10:39:17.892+01:00" type="registered">File http://www.weber-gesamtausgabe.de/correspDesc.xml registered</status>
+        <end timestamp="2019-02-16T10:39:17.894+01:00" urls="1" errors="0" duration="26.581" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="8b268d0b-b4ba-4318-9878-025676aaaedf">
+        <start timestamp="2019-02-16T10:39:24.742+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-02-16T10:40:09.552+01:00" type="stored" url="http://www.weber-gesamtausgabe.de/correspDesc.xml">Successful stored</status>
+        <end timestamp="2019-02-16T10:40:09.566+01:00" urls="1" errors="0" duration="44.823" updated="1" notModified="0">End update sequence</end>
+    </action>
+    <action id="644d0b9e-0eea-49cf-84d5-2f287118f1b0">
+        <start timestamp="2019-02-16T10:53:31.211+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-16T10:53:39.516+01:00" type="storedReport" url="http://www.weber-gesamtausgabe.de/correspDesc.xml">Report successfully stored</status>
+        <end timestamp="2019-02-16T10:53:39.516+01:00" type="report">End creating report</end>
+    </action>
+    <action id="fed33b6f-574c-4adc-b2a2-5faee1662c71">
+        <start timestamp="2019-02-22T15:19:55.517+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-02-22T15:21:37.369+01:00" type="notModified" url="http://correspSearch.net/storage/AvH-USA.xml">Not modified</status>
+        <end timestamp="2019-02-22T15:21:37.436+01:00" urls="1" errors="0" duration="101.871" updated="0" notModified="1">End update sequence</end>
+    </action>
+    <action id="988211c3-26aa-4489-ae9b-26986a57bbcb">
+        <start timestamp="2019-02-22T15:43:12.6+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-02-22T15:43:26.876+01:00" type="notModified" url="http://correspSearch.net/storage/AvH-USA.xml">Not modified</status>
+        <end timestamp="2019-02-22T15:43:26.895+01:00" urls="1" errors="0" duration="14.295" updated="0" notModified="1">End update sequence</end>
+    </action>
+    <action id="f9dc6ffb-2f1b-4ef5-b729-30f844bde949">
+        <start timestamp="2019-02-22T15:45:13.846+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-02-22T15:45:18.917+01:00" type="notModified" url="http://correspSearch.net/storage/AvH-USA.xml">Not modified</status>
+        <end timestamp="2019-02-22T15:45:18.936+01:00" urls="1" errors="0" duration="5.09" updated="0" notModified="1">End update sequence</end>
+    </action>
+    <action id="ba4df32d-e22c-4579-9f8a-e454d03441ae">
+        <start timestamp="2019-02-22T15:46:59.256+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <error timestamp="2019-02-22T15:47:38.992+01:00" type="wrongStatusCode" url="http://correspSearch.net/storage/AvH-USA.xml">Wrong status code: 500 for http://correspSearch.net/storage/AvH-USA.xml</error>
+        <end timestamp="2019-02-22T15:47:39.004+01:00" urls="1" errors="1" duration="39.747" updated="0" notModified="0">End update sequence</end>
+    </action>
+    <action id="b8f5cf0a-369d-47ca-9f92-faf1bb4d5435">
+        <start timestamp="2019-02-22T16:04:05.11+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-02-22T16:05:33.884+01:00" type="storedReport" url="http://www.richard-strauss-ausgabe.de/export/cmif.xml">Report successfully stored</status>
+        <end timestamp="2019-02-22T16:05:33.884+01:00" type="report">End creating report</end>
+    </action>
+<action id="7caf0453-b452-4588-a7ba-d9a9fd3eb633">
+        <start timestamp="2019-03-06T08:59:26.903+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-03-06T08:59:32.485+01:00" type="stored" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">Successful stored</status>
+        <end timestamp="2019-03-06T08:59:32.508+01:00" urls="1" errors="0" duration="5.587" updated="1" notModified="0">End update sequence</end>
+    </action>
+    <action id="a862e620-980d-4efc-aa2f-d9d542fabb12">
+        <start timestamp="2019-03-06T16:53:20.358+01:00" type="deregister">Start deregister sequence</start>
+        <status timestamp="2019-03-06T16:53:20.839+01:00" type="deleted" url="http://telotadev.bbaw.de/oxygen/cmif-validated.xml">File deleted in DB </status>
+        <end timestamp="2019-03-06T16:53:20.896+01:00" urls="1" errors="0" duration="0.527" updated="-" notModified="-">End deregister sequence</end>
+    </action>
+    <action id="1837ec81-787f-4233-b005-4e346368a84b">
+        <start timestamp="2019-03-06T16:53:57.907+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-03-06T16:53:59.094+01:00" type="registered">File http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml registered</status>
+        <end timestamp="2019-03-06T16:53:59.155+01:00" urls="1" errors="0" duration="1.191" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="cb101173-04fd-48b0-993a-ff6646ba602a">
+        <start timestamp="2019-03-06T16:54:08.304+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <error timestamp="2019-03-06T16:54:11.964+01:00" type="notWellformed" url="http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml">XML document http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml is not wellformed</error>
+        <end timestamp="2019-03-06T16:54:11.977+01:00" urls="1" errors="1" duration="3.666" updated="0" notModified="0">End update sequence</end>
+    </action>
+    <action id="942058c4-7e23-4e6d-aae4-6defcee15fc1">
+        <start timestamp="2019-07-19T16:29:09.588+02:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-07-19T16:29:10.688+02:00" type="notModified" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">Not modified</status>
+        <end timestamp="2019-07-19T16:29:10.774+02:00" urls="1" errors="0" duration="1.109" updated="0" notModified="1">End update sequence</end>
+    </action>
+    <action id="2565ff96-1870-4900-ace9-cd040553d63a">
+        <start timestamp="2019-07-19T16:29:18.297+02:00" type="report">Start creating report</start>
+        <status timestamp="2019-07-19T16:29:18.521+02:00" type="storedReport" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">Report successfully stored</status>
+        <end timestamp="2019-07-19T16:29:18.523+02:00" type="report">End creating report</end>
+    </action>
+</log>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div data-template="app:actions">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table" data-template="app:action-entries">
+                        <tr>
+                            <th>Type</th>
+                            <th>Time</th>
+                            <th>URL</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr data-template="templates:each" data-template-from="entries" data-template-to="entry">
+                            <td class="app:action-entry-type"/>
+                            <td class="app:action-entry-time"/>
+                            <td class="app:action-entry-url"/>
+                            <td class="app:action-entry-desc"/>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
