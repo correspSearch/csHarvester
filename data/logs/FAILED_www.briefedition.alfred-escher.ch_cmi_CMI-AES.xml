@@ -2,14 +2,14 @@
 <httpclient:response xmlns:httpclient="http://exist-db.org/xquery/httpclient" statusCode="200">
     <httpclient:headers>
         <httpclient:header name="Server" value="nginx"/>
-        <httpclient:header name="Date" value="Wed, 06 Mar 2019 15:54:08 GMT"/>
+        <httpclient:header name="Date" value="Fri, 29 Nov 2019 12:32:04 GMT"/>
         <httpclient:header name="Content-Type" value="text/xml"/>
         <httpclient:header name="Content-Length" value="3092941"/>
         <httpclient:header name="Connection" value="keep-alive"/>
         <httpclient:header name="Vary" value="Accept-Language, Cookie"/>
         <httpclient:header name="Content-Language" value="de-ch"/>
-        <httpclient:header name="X-Varnish" value="311427 1710216"/>
-        <httpclient:header name="Age" value="10"/>
+        <httpclient:header name="X-Varnish" value="544523 995513"/>
+        <httpclient:header name="Age" value="128"/>
         <httpclient:header name="Via" value="1.1 varnish-v4"/>
         <httpclient:header name="Cache-State" value="H"/>
         <httpclient:header name="Accept-Ranges" value="bytes"/>

@@ -517,4 +517,171 @@
         <status timestamp="2019-07-19T16:29:18.521+02:00" type="storedReport" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">Report successfully stored</status>
         <end timestamp="2019-07-19T16:29:18.523+02:00" type="report">End creating report</end>
     </action>
+<action id="d31512be-9449-4cf1-aac7-8d7df06c4cac">
+        <start timestamp="2019-11-29T13:22:21.756+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-11-29T13:22:26.467+01:00" type="notModified" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">Not modified</status>
+        <end timestamp="2019-11-29T13:22:26.499+01:00" urls="1" errors="0" duration="4.711" updated="0" notModified="1">End update sequence</end>
+    </action>
+    <action id="5cdde3ca-4a73-45f1-9151-da04ca3b2f0a">
+        <start timestamp="2019-11-29T13:22:33.148+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-11-29T13:22:36.393+01:00" type="storedReport" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">Report successfully stored</status>
+        <end timestamp="2019-11-29T13:22:36.393+01:00" type="report">End creating report</end>
+    </action>
+    <action id="3c5237a2-5c41-4532-9f19-64738ca89c0e">
+        <start timestamp="2019-11-29T13:25:53.93+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-11-29T13:25:55.053+01:00" type="notModified" url="http://correspSearch.net/storage/AvH-USA.xml">Not modified</status>
+        <end timestamp="2019-11-29T13:25:55.053+01:00" urls="1" errors="0" duration="1.123" updated="0" notModified="1">End update sequence</end>
+    </action>
+    <action id="315b6a45-c5e8-4e08-b9b9-bbb485198ad5">
+        <start timestamp="2019-11-29T13:26:38.81+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-11-29T13:26:40.062+01:00" type="stored" url="https://www.bach-digital.de/letters/BachLetters.xml">Successful stored</status>
+        <end timestamp="2019-11-29T13:26:40.066+01:00" urls="1" errors="0" duration="1.255" updated="1" notModified="0">End update sequence</end>
+    </action>
+    <action id="0b2cfc0c-a459-4f9a-bc03-bef5493d059e">
+        <start timestamp="2019-11-29T13:29:32.854+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-11-29T13:29:33.79+01:00" type="stored" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Successful stored</status>
+        <end timestamp="2019-11-29T13:29:33.806+01:00" urls="1" errors="0" duration="0.952" updated="1" notModified="0">End update sequence</end>
+    </action>
+    <action id="09d0c670-97bd-4772-ae39-9e97b9d0e835">
+        <start timestamp="2019-11-29T13:29:55.316+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <error timestamp="2019-11-29T13:29:57.687+01:00" type="notWellformed" url="http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml">XML document http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml is not wellformed</error>
+        <end timestamp="2019-11-29T13:29:57.703+01:00" urls="1" errors="1" duration="2.387" updated="0" notModified="0">End update sequence</end>
+    </action>
+    <action id="1b41664e-31b6-4943-9d68-793f5e3e5415">
+        <start timestamp="2019-11-29T13:30:25.489+01:00" loglevel="Default" urls="15" force-update="Yes" validation-mode="Yes" type="update-all">Begin sequence to update all files</start>
+        <trace timestamp="2019-11-29T13:30:25.489+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Boussingault.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:30:25.489+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Boussingault.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:30:25.598+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Boussingault.xml">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:30:25.676+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Boussingault.xml">Wellformed</trace>
+        <error timestamp="2019-11-29T13:30:25.863+01:00" type="validationFailed" url="http://correspSearch.bbaw.de/storage/Humboldt-Boussingault.xml">Validation of http://correspSearch.bbaw.de/storage/Humboldt-Boussingault.xml failed</error>
+        <report>
+            <status>invalid</status>
+            <duration unit="msec">94</duration>
+            <message level="Error" line="1457" column="18" repeat="2">element "div" not allowed anywhere; expected element "bibl", "note" or "p"</message>
+            <message level="Error" line="1460" column="16">element "body" incomplete; expected element "bibl", "note" or "p"</message>
+        </report>
+        <trace timestamp="2019-11-29T13:30:25.863+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:30:25.863+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:30:25.925+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:30:25.988+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">Wellformed</trace>
+        <trace timestamp="2019-11-29T13:30:26.097+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">Validated</trace>
+        <status timestamp="2019-11-29T13:30:26.175+01:00" type="notModified" url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml">Not modified</status>
+        <trace timestamp="2019-11-29T13:30:26.175+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Ritter.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:30:26.191+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Ritter.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:30:26.269+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Ritter.xml">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:30:26.378+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Ritter.xml">Wellformed</trace>
+        <trace timestamp="2019-11-29T13:30:26.549+01:00" url="http://correspSearch.bbaw.de/storage/Humboldt-Ritter.xml">Validated</trace>
+        <status timestamp="2019-11-29T13:30:26.627+01:00" type="notModified" url="http://correspSearch.bbaw.de/storage/Humboldt-Ritter.xml">Not modified</status>
+        <trace timestamp="2019-11-29T13:30:26.627+01:00" url="http://correspsearch.bbaw.de/storage/HumboldtVarnhagen.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:30:26.627+01:00" url="http://correspsearch.bbaw.de/storage/HumboldtVarnhagen.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:30:26.674+01:00" url="http://correspsearch.bbaw.de/storage/HumboldtVarnhagen.xml">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:30:26.799+01:00" url="http://correspsearch.bbaw.de/storage/HumboldtVarnhagen.xml">Wellformed</trace>
+        <trace timestamp="2019-11-29T13:30:27.017+01:00" url="http://correspsearch.bbaw.de/storage/HumboldtVarnhagen.xml">Validated</trace>
+        <status timestamp="2019-11-29T13:30:27.096+01:00" type="notModified" url="http://correspsearch.bbaw.de/storage/HumboldtVarnhagen.xml">Not modified</status>
+        <trace timestamp="2019-11-29T13:30:27.096+01:00" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:30:27.096+01:00" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:30:27.406+01:00" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:30:28.146+01:00" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">Wellformed</trace>
+        <trace timestamp="2019-11-29T13:30:29.888+01:00" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">Validated</trace>
+        <status timestamp="2019-11-29T13:30:30.488+01:00" type="notModified" url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml">Not modified</status>
+        <trace timestamp="2019-11-29T13:30:30.488+01:00" url="http://correspSearch.net/storage/AvH-USA.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:30:30.488+01:00" url="http://correspSearch.net/storage/AvH-USA.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:30:30.508+01:00" url="http://correspSearch.net/storage/AvH-USA.xml">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:30:30.618+01:00" url="http://correspSearch.net/storage/AvH-USA.xml">Wellformed</trace>
+        <trace timestamp="2019-11-29T13:30:30.778+01:00" url="http://correspSearch.net/storage/AvH-USA.xml">Validated</trace>
+        <status timestamp="2019-11-29T13:30:30.828+01:00" type="notModified" url="http://correspSearch.net/storage/AvH-USA.xml">Not modified</status>
+        <trace timestamp="2019-11-29T13:30:30.828+01:00" url="http://www.thomasgray.org/texts/letters/correspSearch.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:30:30.828+01:00" url="http://www.thomasgray.org/texts/letters/correspSearch.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:30:30.988+01:00" url="http://www.thomasgray.org/texts/letters/correspSearch.xml">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:30:31.198+01:00" url="http://www.thomasgray.org/texts/letters/correspSearch.xml">Wellformed</trace>
+        <trace timestamp="2019-11-29T13:30:31.618+01:00" url="http://www.thomasgray.org/texts/letters/correspSearch.xml">Validated</trace>
+        <status timestamp="2019-11-29T13:30:31.748+01:00" type="notModified" url="http://www.thomasgray.org/texts/letters/correspSearch.xml">Not modified</status>
+        <trace timestamp="2019-11-29T13:30:31.748+01:00" url="https://sturm-edition.de/cmif/corresp.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:30:31.748+01:00" url="https://sturm-edition.de/cmif/corresp.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:30:31.82+01:00" url="https://sturm-edition.de/cmif/corresp.xml">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:30:31.95+01:00" url="https://sturm-edition.de/cmif/corresp.xml">Wellformed</trace>
+        <trace timestamp="2019-11-29T13:30:32.09+01:00" url="https://sturm-edition.de/cmif/corresp.xml">Validated</trace>
+        <trace timestamp="2019-11-29T13:30:32.14+01:00" url="https://sturm-edition.de/cmif/corresp.xml">Modified</trace>
+        <status timestamp="2019-11-29T13:30:32.24+01:00" type="stored" url="https://sturm-edition.de/cmif/corresp.xml">Successful stored</status>
+        <trace timestamp="2019-11-29T13:30:32.24+01:00" url="https://august-wilhelm-schlegel.de/briefedigital/api/cmif">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:30:32.24+01:00" url="https://august-wilhelm-schlegel.de/briefedigital/api/cmif">URL okay</trace>
+        <trace timestamp="2019-11-29T13:30:44.668+01:00" url="https://august-wilhelm-schlegel.de/briefedigital/api/cmif">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:30:59.332+01:00" url="https://august-wilhelm-schlegel.de/briefedigital/api/cmif">Wellformed</trace>
+        <error timestamp="2019-11-29T13:31:38.287+01:00" type="validationFailed" url="https://august-wilhelm-schlegel.de/briefedigital/api/cmif">Validation of https://august-wilhelm-schlegel.de/briefedigital/api/cmif failed</error>
+        <report>
+            <status>invalid</status>
+            <duration unit="msec">1358</duration>
+            <message level="Error" line="8" column="35">element "forename" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="9" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="10" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="13" column="35">element "forename" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="14" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="15" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="18" column="35">element "forename" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="19" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="20" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="23" column="35">element "forename" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="24" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="25" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
+            <message level="Error" line="28" column="27" repeat="4">element "respStmt" not allowed anywhere; expected the element end-tag or element "editor"</message>
+            <message level="Error" line="40" column="40">element "ab" not allowed anywhere; expected the element end-tag or element "licence" or "p"</message>
+            <message level="Error" line="45" column="43">element "bibl" missing required attribute "type"</message>
+        </report>
+        <trace timestamp="2019-11-29T13:31:38.287+01:00" url="http://www.richard-strauss-ausgabe.de/export/cmif.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:31:38.287+01:00" url="http://www.richard-strauss-ausgabe.de/export/cmif.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:31:38.365+01:00" url="http://www.richard-strauss-ausgabe.de/export/cmif.xml">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:31:38.49+01:00" url="http://www.richard-strauss-ausgabe.de/export/cmif.xml">Wellformed</trace>
+        <trace timestamp="2019-11-29T13:31:38.631+01:00" url="http://www.richard-strauss-ausgabe.de/export/cmif.xml">Validated</trace>
+        <status timestamp="2019-11-29T13:31:38.709+01:00" type="notModified" url="http://www.richard-strauss-ausgabe.de/export/cmif.xml">Not modified</status>
+        <trace timestamp="2019-11-29T13:31:38.709+01:00" url="https://www.bach-digital.de/letters/BachLetters.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:31:38.709+01:00" url="https://www.bach-digital.de/letters/BachLetters.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:31:38.802+01:00" url="https://www.bach-digital.de/letters/BachLetters.xml">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:31:38.974+01:00" url="https://www.bach-digital.de/letters/BachLetters.xml">Wellformed</trace>
+        <trace timestamp="2019-11-29T13:31:39.364+01:00" url="https://www.bach-digital.de/letters/BachLetters.xml">Validated</trace>
+        <status timestamp="2019-11-29T13:31:39.442+01:00" type="notModified" url="https://www.bach-digital.de/letters/BachLetters.xml">Not modified</status>
+        <trace timestamp="2019-11-29T13:31:39.442+01:00" url="http://diglib.hab.de/edoc/ed000213/download/cmi.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:31:39.442+01:00" url="http://diglib.hab.de/edoc/ed000213/download/cmi.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:31:39.489+01:00" url="http://diglib.hab.de/edoc/ed000213/download/cmi.xml">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:31:39.645+01:00" url="http://diglib.hab.de/edoc/ed000213/download/cmi.xml">Wellformed</trace>
+        <trace timestamp="2019-11-29T13:31:39.769+01:00" url="http://diglib.hab.de/edoc/ed000213/download/cmi.xml">Validated</trace>
+        <status timestamp="2019-11-29T13:31:39.816+01:00" type="notModified" url="http://diglib.hab.de/edoc/ed000213/download/cmi.xml">Not modified</status>
+        <trace timestamp="2019-11-29T13:31:39.816+01:00" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:31:39.816+01:00" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:31:39.816+01:00" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:31:39.847+01:00" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Wellformed</trace>
+        <trace timestamp="2019-11-29T13:31:39.957+01:00" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Validated</trace>
+        <status timestamp="2019-11-29T13:31:39.988+01:00" type="notModified" url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml">Not modified</status>
+        <trace timestamp="2019-11-29T13:31:39.988+01:00" url="http://www.weber-gesamtausgabe.de/correspDesc.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:31:39.988+01:00" url="http://www.weber-gesamtausgabe.de/correspDesc.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:31:40.269+01:00" url="http://www.weber-gesamtausgabe.de/correspDesc.xml">Status code: 200</trace>
+        <trace timestamp="2019-11-29T13:31:44.465+01:00" url="http://www.weber-gesamtausgabe.de/correspDesc.xml">Wellformed</trace>
+        <trace timestamp="2019-11-29T13:31:55.106+01:00" url="http://www.weber-gesamtausgabe.de/correspDesc.xml">Validated</trace>
+        <trace timestamp="2019-11-29T13:31:56.541+01:00" url="http://www.weber-gesamtausgabe.de/correspDesc.xml">New CMIF file http://www.weber-gesamtausgabe.de/correspDesc.xml</trace>
+        <status timestamp="2019-11-29T13:32:02.844+01:00" type="stored" url="http://www.weber-gesamtausgabe.de/correspDesc.xml">Successful stored</status>
+        <trace timestamp="2019-11-29T13:32:02.844+01:00" url="http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml">Begin update all files</trace>
+        <trace timestamp="2019-11-29T13:32:02.844+01:00" url="http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml">URL okay</trace>
+        <trace timestamp="2019-11-29T13:32:03+01:00" url="http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml">Status code: 200</trace>
+        <error timestamp="2019-11-29T13:32:05.199+01:00" type="notWellformed" url="http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml">XML document http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml is not wellformed</error>
+        <end timestamp="2019-11-29T13:32:05.199+01:00" urls="15" errors="3" duration="99.71" updated="2" notModified="10">End update sequence</end>
+    </action>
+    <action id="a8e4b9e8-d337-416a-90b6-8abe0822a3f0">
+        <start timestamp="2019-11-29T13:33:24.351+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-11-29T13:33:40.625+01:00" type="storedReport" url="https://august-wilhelm-schlegel.de/briefedigital/api/cmif">Report successfully stored</status>
+        <end timestamp="2019-11-29T13:33:40.625+01:00" type="report">End creating report</end>
+    </action>
+    <action id="ca3303b6-77e2-444c-b5f6-425187a4392a">
+        <start timestamp="2019-11-29T13:39:08.664+01:00" type="register">Start register sequence</start>
+        <status timestamp="2019-11-29T13:39:08.773+01:00" type="registered">File https://correspsearch.net/storage/WielandBW-1.xml registered</status>
+        <end timestamp="2019-11-29T13:39:08.773+01:00" urls="1" errors="0" duration="0.109" updated="1" notModified="-">End register sequence</end>
+    </action>
+    <action id="2661dbbc-d88e-4b80-a382-8c06e0130d0e">
+        <start timestamp="2019-11-29T13:39:21.445+01:00" loglevel="default" urls="1" force-update="no" validation-mode="yes" type="update">Begin sequence to update file</start>
+        <status timestamp="2019-11-29T13:39:22.178+01:00" type="stored" url="https://correspsearch.net/storage/WielandBW-1.xml">Successful stored</status>
+        <end timestamp="2019-11-29T13:39:22.178+01:00" urls="1" errors="0" duration="0.733" updated="1" notModified="0">End update sequence</end>
+    </action>
+    <action id="d63f7f12-e36d-416c-9f7f-8852748d5dda">
+        <start timestamp="2019-11-29T13:39:28.355+01:00" type="report">Start creating report</start>
+        <status timestamp="2019-11-29T13:39:28.87+01:00" type="storedReport" url="https://correspsearch.net/storage/WielandBW-1.xml">Report successfully stored</status>
+        <end timestamp="2019-11-29T13:39:28.87+01:00" type="report">End creating report</end>
+    </action>
 </log>

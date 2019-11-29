@@ -88,7 +88,7 @@ declare function app:format-date($date as xs:string*, $type as xs:string) as xs:
 
     return
     if (matches($date, '^\d\d\d\d-\d\d-\d\d$'))
-    then format-date($date, $pattern)
+    then format-date($date, '[Y0001]-[M01]-[D01]')
     else if (matches($date, '^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?([\+|-]\d\d:\d\d|Z)?$'))
     then format-dateTime($date, $pattern)
     else ('—')

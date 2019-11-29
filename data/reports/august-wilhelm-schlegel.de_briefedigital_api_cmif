@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<report timestamp="2019-02-15T17:47:05.217+01:00" id="5bd27833-481d-439e-9e8e-af52cb431e5a">
+<report timestamp="2019-11-29T13:33:40.594+01:00" id="0e159df9-3c71-4a1a-94f1-ce2af8c64f26">
     <file-id>https://august-wilhelm-schlegel.de/briefedigital/api/cmif</file-id>
     <file-title>Digitale Edition der Korrespondenz August Wilhelm Schlegels</file-title>
-    <file-last-modified>2019-02-15T17:46:51+01:00</file-last-modified>
+    <file-last-modified>2019-11-29T13:33:27+01:00</file-last-modified>
+    <file-stored>no</file-stored>
     <validation>
         <report>
             <status>invalid</status>
-            <duration unit="msec">1642</duration>
+            <duration unit="msec">1342</duration>
             <message level="Error" line="8" column="35">element "forename" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
             <message level="Error" line="9" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
             <message level="Error" line="10" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
@@ -20,16 +21,17 @@
             <message level="Error" line="24" column="34">element "surname" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
             <message level="Error" line="25" column="38">element "affiliation" not allowed anywhere; expected the element end-tag, text or element "email", "name", "note", "orgName", "persName", "placeName", "ref" or "title"</message>
             <message level="Error" line="28" column="27" repeat="4">element "respStmt" not allowed anywhere; expected the element end-tag or element "editor"</message>
-            <message level="Error" line="44" column="43">element "bibl" missing required attribute "type"</message>
+            <message level="Error" line="40" column="40">element "ab" not allowed anywhere; expected the element end-tag or element "licence" or "p"</message>
+            <message level="Error" line="45" column="43">element "bibl" missing required attribute "type"</message>
         </report>
     </validation>
     <statistics>
-        <feature key="correspDesc" value="5288"/>
+        <feature key="correspDesc" value="5302"/>
         <feature-set key="persName">
-            <feature key="all" value="11103"/>
-            <feature key="no-ref" value="650"/>
+            <feature key="all" value="11213"/>
+            <feature key="no-ref" value="618"/>
             <feature key="no-ref-share" value="6"/>
-            <feature key="gnd" value="10453"/>
+            <feature key="gnd" value="10595"/>
             <feature key="viaf" value="0"/>
             <feature key="bnf" value="0"/>
             <feature key="lc" value="0"/>
@@ -50,10 +52,10 @@
             <feature key="non-supported" value="3"/>
         </feature-set>
         <feature-set key="placeName">
-            <feature key="all" value="8129"/>
-            <feature key="no-ref" value="34"/>
+            <feature key="all" value="8530"/>
+            <feature key="no-ref" value="33"/>
             <feature key="no-ref-share" value="0"/>
-            <feature key="gnd" value="8095"/>
+            <feature key="gnd" value="8497"/>
             <feature key="viaf" value="0"/>
             <feature key="bnf" value="0"/>
             <feature key="lc" value="0"/>
