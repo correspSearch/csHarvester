@@ -1,0 +1,5 @@
+# In this directory the harvested CMIF files will be stored
+# Ignore everything in this directory
+*
+# Except this file
+!.gitignore

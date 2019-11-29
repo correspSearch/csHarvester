@@ -1,0 +1,5 @@
+# In this directory the log files will be stored
+# Ignore everything in this directory
+*
+# Except this file
+!.gitignore
