@@ -9,7 +9,7 @@ declare variable $exist:root external;
 if ($exist:path eq '') then
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <redirect url="{request:get-uri()}/"/>
-    </dispatch>
+    </dispatch> 
     
 else if ($exist:path eq "/") then
     (: forward root path to index.xql :)

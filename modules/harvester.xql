@@ -334,7 +334,7 @@ declare function csharv:insert-file-entry($url as xs:string) {
             attribute added-by { $current-user }
         } into doc($csharv:cmif-file-index-path)//cmif-files
     let $test :=
-        if ($csharv:cmif-file-index//file[@url=$url])
+        if (doc($csharv:cmif-file-index-path)//file[@url=$url])
         then <status type="registered">File {$url} registered</status>
         else <error type="notRegistered">File {$url} NOT registered</error>
     return
@@ -382,9 +382,9 @@ declare function csharv:register($url as xs:string) {
 declare function csharv:register-retrieve($url) {
     let $register := csharv:register($url)
     return
-        if ($register/message/type='success')
+        if ($register/@type='success')
         then csharv:update($url)
-        else $register
+        else ($register)
 };
 
 declare function csharv:get($url as xs:string) {
