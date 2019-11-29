@@ -12,23 +12,5 @@
         <authority base-url="http://www.geonames.org/|http://sws.geonames.org/" key="geonames"/>
     </authority-files>
     <cmif-files>
-        
-        <file url="http://correspSearch.bbaw.de/storage/Humboldt-Boussingault.xml" added-when="2019-02-11T16:54:36.588+01:00" added-by="dumont"/>
-        <file url="http://correspSearch.bbaw.de/storage/Humboldt-JForster.xml" added-when="2019-02-11T17:11:34.265+01:00" added-by="dumont"/>
-        <file url="http://correspSearch.bbaw.de/storage/Humboldt-Ritter.xml" added-when="2019-02-12T15:41:36.577+01:00"/>
-        <file url="http://correspsearch.bbaw.de/storage/HumboldtVarnhagen.xml" added-when="2019-02-12T16:03:17.373+01:00" added-by="dumont"/>
-        <file url="https://www.jeanpaul-edition.de/correspSearch/jeanpaul-an_CMIF.xml" added-when="2019-02-12T17:58:59.961+01:00" added-by="dumont"/>
-        <file url="http://correspSearch.net/storage/AvH-USA.xml" added-when="2019-02-14T16:56:32.273+01:00" added-by="dumont"/> 
-    <file url="http://www.thomasgray.org/texts/letters/correspSearch.xml" added-when="2019-02-15T16:42:24.47+01:00" added-by="dumont"/>
-        <file url="https://sturm-edition.de/cmif/corresp.xml" added-when="2019-02-15T17:27:24.934+01:00" added-by="dumont"/>
-    
-        <file url="https://august-wilhelm-schlegel.de/briefedigital/api/cmif" added-when="2019-02-15T17:44:46.513+01:00" added-by="dumont"/>
-        <file url="http://www.richard-strauss-ausgabe.de/export/cmif.xml" added-when="2019-02-15T17:47:28.808+01:00" added-by="dumont"/>
-    <file url="https://www.bach-digital.de/letters/BachLetters.xml" added-when="2019-02-15T19:41:24.038+01:00" added-by="admin"/>
-        <file url="http://diglib.hab.de/edoc/ed000213/download/cmi.xml" added-when="2019-02-15T19:55:18.854+01:00" added-by="admin"/>
-        <file url="http://www.deutschestextarchiv.de/sanders-briefe/cs.xml" added-when="2019-02-15T20:23:10.659+01:00" added-by="admin"/>
-        <file url="http://www.weber-gesamtausgabe.de/correspDesc.xml" added-when="2019-02-16T10:39:17.89+01:00" added-by="admin"/>
-    <file url="http://www.briefedition.alfred-escher.ch/cmi/CMI-AES.xml" added-when="2019-03-06T16:53:59.091+01:00" added-by="dumont"/>
-    <file url="https://correspsearch.net/storage/WielandBW-1.xml" added-when="2019-11-29T13:39:08.773+01:00" added-by="admin"/>
     </cmif-files>
 </csHarvester>
