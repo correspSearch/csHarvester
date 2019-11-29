@@ -25,7 +25,7 @@ declare variable $csharv:loglevel := request:get-parameter('loglevel', 'default'
 declare variable $csharv:validation := request:get-parameter('validation', 'yes');
 declare variable $csharv:force := request:get-parameter('force', 'no');
 
-declare variable $csharv:debug := false();
+declare variable $csharv:debug := true();
 
 (: Logging :)
 
@@ -288,6 +288,17 @@ declare function csharv:checkWellformed($url) as xs:boolean {
     csharv:check($test)
 };
 
+declare function csharv:checkIdno($url) as xs:boolean {
+    let $doc := csharv:getTEI($url)
+    let $idno := $doc//tei:publicationStmt/tei:idno/text()
+    let $test :=
+        if ($idno=$url)
+        then <trace url="{$url}">tei:idno corresponds to registered URL</trace>
+        else <error type="idnoFailed" url="{$url}">Registered URL {$url} DO NOT corresponds to tei:idno: {$idno}</error>
+    return
+    csharv:check($test)        
+};
+
 declare function csharv:getValidationReport($doc) {
     validation:validate-report($doc, doc($csharv:schema))
 };
@@ -394,15 +405,18 @@ declare function csharv:get($url as xs:string) {
         then 
             if (csharv:checkWellformed($url))
             then 
-                if (csharv:checkValidation($url) or $csharv:validation='no')
+                if (csharv:checkIdno($url))
                 then
-                    if (csharv:checkIfModified($url) or $csharv:force='yes')
-                    then 
-                        if (csharv:store($url))
-                        then ()
-                        else csharv:getErrorMessage($url)
+                    if (csharv:checkValidation($url) or $csharv:validation='no')
+                    then
+                        if (csharv:checkIfModified($url) or $csharv:force='yes')
+                        then 
+                            if (csharv:store($url))
+                            then ()
+                            else csharv:getErrorMessage($url)
+                        else (csharv:getErrorMessage($url))
                     else (csharv:getErrorMessage($url))
-                else (csharv:getErrorMessage($url))
+                else csharv:getErrorMessage($url)
             else (csharv:getErrorMessage($url))
         else (csharv:getErrorMessage($url))
      else (csharv:getErrorMessage($url))  
