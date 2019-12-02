@@ -121,9 +121,13 @@
                         <table class="table" data-template="app:last-registered">
                             <tr>
                                 <th>URL</th>
+                                <th>
+                                    <i class="fas fa-file-alt fa-lg"/>
+                                </th>
                             </tr>
                             <tr data-template="templates:each" data-template-from="files" data-template-to="file">
                                 <td data-template="app:cmif-file-url"/>
+                                <td data-template="app:cmif-file-report"/>
                             </tr>
                         </table>
                     </div>
