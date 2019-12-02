@@ -332,8 +332,10 @@ declare function local:cleanFileName($url as xs:string) as xs:string {
     let $replace1 := replace($url, 'http://', '')
     let $replace2 := replace($replace1, 'https://', '')
     let $replace3 := replace($replace2, '/', '_')
+    let $replace4 := replace($replace3, '.xql', '')
+    let $replace5 := replace($replace4, '.xml', '')
     return
-    $replace3
+    $replace5||'.xml'
 };
 
 declare function csharv:insert-file-entry($url as xs:string) {
