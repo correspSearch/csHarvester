@@ -130,7 +130,7 @@ declare %templates:wrap function app:last-modified-date($node as node(), $model 
 };
 
 declare %templates:wrap function app:last-modified-url($node as node(), $model as map(*)) {
-    $model("tei")//tei:publicationStmt/tei:idno/text()
+    $model("tei")//tei:publicationStmt/tei:idno/normalize-space(.)
 };
 
 
@@ -286,7 +286,7 @@ declare %templates:wrap function app:cmif-file-url($node as node(), $model as ma
 
 declare %templates:wrap function app:cmif-file-count($node as node(), $model as map(*)) {
     let $url := $model("file")/@url/data(.)
-    let $count := count(collection($config:data-root)//tei:TEI[.//tei:idno=$url]//tei:correspDesc)
+    let $count := count(collection($config:data-root)//tei:TEI[.//tei:idno/normalize-space(.)=$url]//tei:correspDesc)
     return
     if ($count)
     then $count
@@ -303,7 +303,7 @@ declare %templates:wrap function app:cmif-file-by($node as node(), $model as map
 
 declare %templates:wrap function app:cmif-file-modified($node as node(), $model as map(*)) {
     let $url := $model("file")/@url/data(.)
-    let $date := collection($csharv:data)//tei:publicationStmt[.//tei:idno/text()=$url]/tei:date/@when     
+    let $date := collection($csharv:data)//tei:publicationStmt[.//tei:idno/normalize-space(.)=$url]/tei:date/@when     
     return
     app:format-date($date, 'date')
 };

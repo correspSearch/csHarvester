@@ -255,7 +255,7 @@ declare function csharv:checkStatusCode($url as xs:string) as xs:boolean {
 (: Updating inkl. Tests :)
 
 (:declare function csharv:checkModifiedSince($url as xs:string) as xs:boolean {
-    let $last-modification := collection($data)//tei:TEI[.//tei:idno=$url]/tei:publicationStmt//@when
+    let $last-modification := collection($data)//tei:TEI[.//tei:idno/normalize-space(.)=$url]/tei:publicationStmt//@when
     let $request := httpclient:head($url, true(), <headers><header name="If-Modified-Since" value="Wed, 5 Dec 2018 19:43:31 GMT"></header></headers>)
     let $test :=
         $request
@@ -290,7 +290,7 @@ declare function csharv:checkWellformed($url) as xs:boolean {
 
 declare function csharv:checkIdno($url) as xs:boolean {
     let $doc := csharv:getTEI($url)
-    let $idno := $doc//tei:publicationStmt/tei:idno//text()
+    let $idno := normalize-space($doc//tei:publicationStmt/tei:idno)
     let $test :=
         if ($idno=$url)
         then <trace url="{$url}">tei:idno corresponds to registered URL</trace>
@@ -315,7 +315,7 @@ declare function csharv:checkValidation($url) as xs:boolean {
 };
 
 declare function csharv:checkIfModified($url) as xs:boolean {
-    let $oldDoc := collection($csharv:data)//tei:TEI[.//tei:idno=$url]
+    let $oldDoc := collection($csharv:data)//tei:TEI[.//tei:idno/normalize-space(.)=$url]
     let $newDoc := csharv:getTEI($url)
     let $test :=
         if ($oldDoc)
@@ -444,7 +444,7 @@ declare function csharv:update-all() {
 };
 
 declare function csharv:delete-file($url) {
-    let $file := collection($csharv:data)//tei:TEI[.//tei:idno=$url]
+    let $file := collection($csharv:data)//tei:TEI[.//tei:idno/normalize-space(.)=$url]
     let $filename := substring-after(base-uri($file), 'cmif-files/')
     let $remove :=
         if ($file)
@@ -453,7 +453,7 @@ declare function csharv:delete-file($url) {
     let $test :=
         if (not($file))
         then <error type="failed" url="{$url}">File {$filename} NOT available in DB</error>
-        else if (collection($csharv:data)//tei:TEI[./tei:idno=$url])
+        else if (collection($csharv:data)//tei:TEI[./tei:idno/normalize-space(.)=$url])
         then <error type="failed" url="{$url}">File {$filename} NOT removed from DB</error>
         else <status type="deleted" url="{$url}">File deleted in DB </status>
     return
@@ -561,7 +561,7 @@ declare function csharv:createReport($url) {
         <file-title>{$file//tei:titleStmt/tei:title/text()}</file-title>
         <file-editors>{$editors}</file-editors>
         <file-last-modified>{$file//tei:publicationStmt/tei:date/@when/data(.)}</file-last-modified>
-        <file-stored>{if (collection($csharv:data)//tei:TEI[.//tei:idno=$url]) then 'yes' else 'no'}</file-stored>
+        <file-stored>{if (collection($csharv:data)//tei:TEI[.//tei:idno/normalize-space(.)=$url]) then 'yes' else 'no'}</file-stored>
         <validation>
             {$validation-report}
         </validation>
