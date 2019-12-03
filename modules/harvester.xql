@@ -290,7 +290,7 @@ declare function csharv:checkWellformed($url) as xs:boolean {
 
 declare function csharv:checkIdno($url) as xs:boolean {
     let $doc := csharv:getTEI($url)
-    let $idno := $doc//tei:publicationStmt/tei:idno/text()
+    let $idno := $doc//tei:publicationStmt/tei:idno//text()
     let $test :=
         if ($idno=$url)
         then <trace url="{$url}">tei:idno corresponds to registered URL</trace>
@@ -332,10 +332,11 @@ declare function local:cleanFileName($url as xs:string) as xs:string {
     let $replace1 := replace($url, 'http://', '')
     let $replace2 := replace($replace1, 'https://', '')
     let $replace3 := replace($replace2, '/', '_')
-    let $replace4 := replace($replace3, '.xql', '')
-    let $replace5 := replace($replace4, '.xml', '')
+    let $replace4 := replace($replace3, ':', '_')
+    let $replace5 := replace($replace4, '.xql', '')
+    let $replace6 := replace($replace5, '.xml', '')
     return
-    $replace5||'.xml'
+    $replace6||'.xml'
 };
 
 declare function csharv:insert-file-entry($url as xs:string) {
