@@ -69,7 +69,7 @@ declare function app:action-alert($node as node(), $model as map(*)) as node()* 
      return
      if ($type eq 'success') then
          <div class="alert alert-success" role="alert">{$message}</div>
-     else if ($type eq 'info') then
+     else if ($type eq 'status') then
          <div class="alert alert-secondary" role="alert">{$message}</div>
      else if ($type eq 'error') then
          <div class="alert alert-danger" role="alert">{$message}</div>

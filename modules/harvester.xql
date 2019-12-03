@@ -322,7 +322,7 @@ declare function csharv:checkIfModified($url) as xs:boolean {
         then 
             if ($newDoc//tei:publicationStmt/tei:date/@when > $oldDoc//tei:publicationStmt/tei:date/@when)
             then <trace url="{$url}">Modified</trace>
-            else <status type="notModified" url="{$url}">Not modified</status>
+            else <status type="notModified" url="{$url}">CMIF file {$url} NOT modified.</status>
         else <trace url="{$url}">New CMIF file {$url}</trace>
     return
     csharv:check($test)
@@ -370,9 +370,12 @@ declare function csharv:store($url) {
 
 (: Später nach oben :)
 declare function csharv:getErrorMessage($url) {
-    for $error in $csharv:log//action[last()]/error[@url=$url]
+   (for $error in $csharv:log//action[last()]/error[@url=$url]
     return
-    <message type="error">{$error/text()}</message>
+    <message type="error">{$error/text()}</message>,
+    for $status in $csharv:log//action[last()]/status[@url=$url]
+    return
+    <message type="status">{$status/text()}</message>)
 };
 
 declare function csharv:register($url as xs:string) {
@@ -415,7 +418,7 @@ declare function csharv:get($url as xs:string) {
                         if (csharv:checkIfModified($url) or $csharv:force='yes')
                         then 
                             if (csharv:store($url))
-                            then ()
+                            then (<message type="success">CMIF file {$url} successfully stored.</message>)
                             else csharv:getErrorMessage($url)
                         else (csharv:getErrorMessage($url))
                     else (csharv:getErrorMessage($url))
@@ -429,8 +432,7 @@ declare function csharv:update($url) {
    (csharv:startLog('update'),
     csharv:write-log(<trace url="{$url}">Begin update for {$url}</trace>), 
     csharv:get($url),
-    csharv:endLog(),
-    <message type="success">Update for {$url} completed.</message>)
+    csharv:endLog())
 };
 
 declare function csharv:update-all() {
