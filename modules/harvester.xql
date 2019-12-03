@@ -466,8 +466,8 @@ let $remove-entry :=
         update delete $file-entry
 let $test :=
     if ($csharv:cmif-file-index//file[@url=$url])
-    then <error type="failed" url="{$url}">Entry in file list NOT removed</error>
-    else <trace url="{$url}">Entry in file list removed</trace>
+    then <error type="failed" url="{$url}">URL in CMIF file index NOT removed</error>
+    else <status type="deleted" url="{$url}">URL in CMIF file index removed</status>
 return
 csharv:check($test)
 };
@@ -476,11 +476,11 @@ declare function csharv:deregister($url) {
     (csharv:startLog('deregister'),
     csharv:write-log(<trace url="{$url}">Begin delete file {$url}</trace>), 
     if (csharv:delete-file($url))
-    then 
-        if (csharv:delete-file-entry($url))
-        then <message type="success">URL: {$url} deleted</message> 
-        else csharv:getErrorMessage($url)
-    else csharv:getErrorMessage($url), 
+    then <message type="success">File for {$url} deleted</message>
+    else csharv:getErrorMessage($url),        
+    if (csharv:delete-file-entry($url))
+    then <message type="success">URL: {$url} deleted from index</message> 
+    else csharv:getErrorMessage($url),
     csharv:endLog())
 };
 
