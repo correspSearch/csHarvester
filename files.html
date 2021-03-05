@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <div data-template="app:actions">
         <div class="col-md-12">
@@ -9,7 +8,7 @@
                     <div data-template="app:action-alert"/>
                     <table class="table" data-template="app:cmif-files">
                         <tr>
-                            <th>URL</th>
+                            <th>Title</th>
                             <th>Letters</th>
                             <th>Added</th>
                             <th>By</th> 
@@ -26,7 +25,7 @@
                             </th>
                         </tr>
                         <tr data-template="templates:each" data-template-from="files" data-template-to="file">
-                            <td data-template="app:cmif-file-url"/>
+                            <td data-template="app:cmif-file-title"/>
                             <td data-template="app:cmif-file-count"/>
                             <td data-template="app:cmif-file-when"/>
                             <td data-template="app:cmif-file-by"/>

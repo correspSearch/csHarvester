@@ -129,8 +129,14 @@ declare %templates:wrap function app:last-modified-date($node as node(), $model 
         app:format-date($date, 'date')
 };
 
-declare %templates:wrap function app:last-modified-url($node as node(), $model as map(*)) {
-    $model("tei")//tei:publicationStmt/tei:idno/normalize-space(.)
+declare %templates:wrap function app:last-modified-title($node as node(), $model as map(*)) {
+    let $title := $model("tei")//tei:titleStmt/tei:title/normalize-space(.)
+    let $url := $model("tei")//tei:publicationStmt/tei:idno/normalize-space(.)
+    return
+        element a {
+            attribute href { $url },
+            $title
+        }
 };
 
 
@@ -282,6 +288,19 @@ declare %templates:wrap function app:cmif-file-url($node as node(), $model as ma
     element a {
         attribute href { $url },
         $url }
+};
+
+declare %templates:wrap function app:cmif-file-title($node as node(), $model as map(*)) {
+    let $url := $model("file")/@url/data(.)
+    let $title := collection($config:data-root)//tei:TEI[.//tei:idno/normalize-space(.)=$url]//tei:titleStmt/tei:title/text()
+    return
+    if ($title)
+    then 
+        element a {
+            attribute href { $url },
+            $title 
+        }
+    else ('-')
 };
 
 declare %templates:wrap function app:cmif-file-count($node as node(), $model as map(*)) {
