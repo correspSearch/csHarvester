@@ -1,15 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <div data-template="app:actions">
-        <div class="row" data-template="app:get-report">
+        <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" data-template="app:get-report">
                         <h1 data-template="app:report-title" class="card-title">Report</h1>  
                     </div>
                 </div>
+                <div class="card mt-4">
+                <div class="card-body">
+                        <h2 class="card-title">Update this CMIF file</h2>
+                        <div data-template="app:action-alert-update"/>
+                        <form method="post">
+                            <input type="hidden" name="id" value="update"/>
+                            <div class="form-group">
+                                <label for="loglevel">Logelevel</label>
+                                <div>
+                                    <select class="form-control  form-control-sm" name="loglevel">
+                                        <option value="default">Default</option>
+                                        <option value="error">All</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="validation">Validation</label>
+                                <div>
+                                    <select class="form-control form-control-sm" name="validation">
+                                        <option value="yes" selected="selected">Yes</option>
+                                        <option value="ignore" selected="selected">Yes, but ignore</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="validation">Force Update</label>
+                                <div>
+                                    <select class="form-control  form-control-sm" name="force">
+                                        <option value="yes">Yes</option>
+                                        <option value="no" selected="selected">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn cs-button">
+                                <i class="fas fa-sync-alt"/> Update CMIF file</button>
+                        </form>
+                    </div>
             </div>
-            <div class="col-md-8">
+            </div>
+            <div class="col-md-8" data-template="app:get-report">
                 <div class="card">
                     <div class="card-body">
                         <table class="table" data-template="app:report-validation"> </table>
