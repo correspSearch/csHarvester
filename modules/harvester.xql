@@ -254,14 +254,22 @@ declare function csharv:checkStatusCode($url as xs:string) as xs:boolean {
 
 (: Updating inkl. Tests :)
 
-(:declare function csharv:checkModifiedSince($url as xs:string) as xs:boolean {
-    let $last-modification := collection($data)//tei:TEI[.//tei:idno/normalize-space(.)=$url]/tei:publicationStmt//@when
-    let $request := httpclient:head($url, true(), <headers><header name="If-Modified-Since" value="Wed, 5 Dec 2018 19:43:31 GMT"></header></headers>)
+declare function csharv:checkHTTP304($url as xs:string) as xs:boolean {
+    let $last-update := $csharv:log//log/action[./status/@url=$url][last()]/status[@url=$url]/@timestamp/data(.)
+    let $adjusted-date := fn:adjust-dateTime-to-timezone(xs:dateTime($last-update), xs:dayTimeDuration("-PT0H"))
+    let $http-date := format-dateTime($adjusted-date, "[FNn, *-3], [D] [MNn, *-3] [Y] [H]:[m]:[s] GMT", "en", (), ())
+    let $params := <headers><header name="If-Modified-Since" value="{$http-date}"></header></headers>
+    let $request := httpclient:head($url, true(), $params)
     let $test :=
-        $request
+        if ($csharv:force="yes" and $request//@statusCode="304")
+        then <trace url="{$url}">Not modified (HTTP-Header 304) but update forced.</trace>
+        else if ($request//@statusCode="304")
+        then <status type="notModified" url="{$url}">CMIF file {$url} NOT modified (HTTP-Header 304).</status>
+        else <trace url="{$url}">Modified or HTTP information about modification not available.</trace>
+    
     return
     csharv:check($test)
-};:)
+};
 
 declare function csharv:getFile($url) as element() {
     httpclient:get($url, true(), ())
@@ -307,8 +315,12 @@ declare function csharv:checkValidation($url) as xs:boolean {
     let $doc := csharv:getTEI($url)
     let $validation := csharv:getValidationReport($doc)
     let $test :=
-        if ($validation//status='valid')
+        if ($csharv:validation='no')
+        then <trace url="{$url}">Validation disabled.</trace>
+        else if ($validation//status='valid')
         then <trace url="{$url}">Validated</trace>
+        else if ($csharv:validation='ignore')
+        then <trace url="{$url}">Validation failed, but ignored.</trace>
         else (<error type="validationFailed" url="{$url}">Validation of {$url} failed</error>, $validation)       
     return
     csharv:check($test)
@@ -322,6 +334,8 @@ declare function csharv:checkIfModified($url) as xs:boolean {
         then 
             if ($newDoc//tei:publicationStmt/tei:date/@when > $oldDoc//tei:publicationStmt/tei:date/@when)
             then <trace url="{$url}">Modified</trace>
+            else if ($csharv:force='yes')
+            then <trace url="{$url}">Not modified but update forced.</trace>
             else <status type="notModified" url="{$url}">CMIF file {$url} NOT modified.</status>
         else <trace url="{$url}">New CMIF file {$url}</trace>
     return
@@ -360,7 +374,7 @@ declare function csharv:store($url) {
     let $filename := local:cleanFileName($url)
     let $test := 
         if (xmldb:store($csharv:data, $filename, $doc))
-        then <status type="stored" url="{$url}">Successful stored</status>
+        then <status type="stored" url="{$url}">Successfully stored</status>
         else <error type="notStored" url="{$url}">File {$url} Not stored!</error>
     return
     csharv:check($test)
@@ -409,21 +423,24 @@ declare function csharv:get($url as xs:string) {
     then 
         if (csharv:checkStatusCode($url))
         then 
-            if (csharv:checkWellformed($url))
+            if (csharv:checkHTTP304($url))
             then 
-                if (csharv:checkIdno($url))
-                then
-                    if (csharv:checkValidation($url) or $csharv:validation='no')
+                if (csharv:checkWellformed($url))
+                then 
+                    if (csharv:checkIdno($url))
                     then
-                        if (csharv:checkIfModified($url) or $csharv:force='yes')
-                        then 
-                            if (csharv:store($url))
-                            then (<message type="success">CMIF file {$url} successfully stored.</message>)
-                            else csharv:getErrorMessage($url)
+                        if (csharv:checkValidation($url))
+                        then
+                            if (csharv:checkIfModified($url))
+                            then 
+                                if (csharv:store($url))
+                                then (<message type="success">CMIF file {$url} successfully stored.</message>)
+                                else csharv:getErrorMessage($url)
+                            else (csharv:getErrorMessage($url))
                         else (csharv:getErrorMessage($url))
-                    else (csharv:getErrorMessage($url))
-                else csharv:getErrorMessage($url)
-            else (csharv:getErrorMessage($url))
+                    else csharv:getErrorMessage($url)
+                else (csharv:getErrorMessage($url))
+            else (csharv:getErrorMessage($url))    
         else (csharv:getErrorMessage($url))
      else (csharv:getErrorMessage($url))  
 };
