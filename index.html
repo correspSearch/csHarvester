@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <div data-template="app:actions">
         <div class="row">
@@ -12,8 +13,8 @@
                                 <label for="loglevel">Logelevel</label>
                                 <div>
                                     <select class="form-control  form-control-sm" name="loglevel">
-                                        <option name="default">Default</option>
-                                        <option name="error">All</option>
+                                        <option value="default">Default</option>
+                                        <option value="error">All</option>
                                     </select>
                                 </div>
                             </div>
@@ -21,8 +22,9 @@
                                 <label for="validation">Validation</label>
                                 <div>
                                     <select class="form-control form-control-sm" name="validation">
-                                        <option name="yes" selected="selected">Yes</option>
-                                        <option name="no">No</option>
+                                        <option value="yes" selected="selected">Yes</option>
+                                        <option value="ignore" selected="selected">Yes, but ignore</option>
+                                        <option value="no">No</option>
                                     </select>
                                 </div>
                             </div>
@@ -30,8 +32,8 @@
                                 <label for="validation">Force Update</label>
                                 <div>
                                     <select class="form-control  form-control-sm" name="force">
-                                        <option name="yes">Yes</option>
-                                        <option name="no" selected="selected">No</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no" selected="selected">No</option>
                                     </select>
                                 </div>
                             </div>
@@ -139,7 +141,7 @@
                         <table class="table" data-template="app:last-modified">
                             <tr>
                                 <th>Date</th>
-                                <th>URL</th>
+                                <th>Title</th>
                             </tr>
                             <tr data-template="templates:each" data-template-from="teis" data-template-to="tei">
                                 <td data-template="app:last-modified-date"/>
