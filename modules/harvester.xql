@@ -369,12 +369,20 @@ declare function csharv:insert-file-entry($url as xs:string) {
     csharv:check($test)
 };
 
+declare function csharv:insert-file-update($url as xs:string) {
+    update insert attribute last-harvested { current-dateTime() } into doc($csharv:cmif-file-index-path)//file[@url=$url]
+};  
+
 declare function csharv:store($url) {
     let $doc := csharv:getTEI($url)
     let $filename := local:cleanFileName($url)
     let $test := 
         if (xmldb:store($csharv:data, $filename, $doc))
-        then <status type="stored" url="{$url}">Successfully stored</status>
+        then (           
+            csharv:insert-file-update($url),
+            <status type="stored" url="{$url}">Successfully stored</status>
+            
+            )
         else <error type="notStored" url="{$url}">File {$url} Not stored!</error>
     return
     csharv:check($test)
@@ -580,6 +588,7 @@ declare function csharv:createReport($url) {
         <file-title>{$file//tei:titleStmt/tei:title/text()}</file-title>
         <file-editors>{$editors}</file-editors>
         <file-last-modified>{$file//tei:publicationStmt/tei:date/@when/data(.)}</file-last-modified>
+        <file-last-harvested>{$csharv:cmif-file-index//file[@url=$url]/@last-harvested/data(.)}</file-last-harvested>
         <file-stored>{if (collection($csharv:data)//tei:TEI[.//tei:idno/normalize-space(.)=$url]) then 'yes' else 'no'}</file-stored>
         <validation>
             {$validation-report}

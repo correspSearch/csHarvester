@@ -327,9 +327,9 @@ declare %templates:wrap function app:cmif-file-modified($node as node(), $model 
     app:format-date($date, 'date')
 };
 
-declare %templates:wrap function app:cmif-file-updated($node as node(), $model as map(*)) {
+declare %templates:wrap function app:cmif-file-harvested($node as node(), $model as map(*)) {
     let $url := $model("file")/@url/data(.)
-    let $date := collection($config:data-root)//log/action[./status/@url=$url][last()]/status[@url=$url]/@timestamp/data(.) 
+    let $date := collection($csharv:cmif-file-index)//file[@url=$url]/@last-harvested/data(.) 
     return
         app:format-date($date, 'all')
 };
@@ -366,7 +366,7 @@ declare %templates:wrap function app:get-report($node as node(), $model as map(*
         else if (csharv:report($url))
         then collection($config:data-root)//report[file-id=$url]
         else ()
-    return        
+    return  
     map { "result" := $report  }
 };
 
@@ -377,6 +377,7 @@ declare function app:report-title($node as node(), $model as map(*)) {
     let $url := $report/file-id/text()
     let $title := $report/file-title/text()
     let $last-modified := app:format-date($report/file-last-modified/text(), 'all')
+    let $last-harvested := app:format-date($report/file-last-harvested/text(), 'all')
     let $editors := 
         for $editor in $model("result")//file-editors/editor
         return
@@ -405,6 +406,10 @@ declare function app:report-title($node as node(), $model as map(*)) {
         <tr>
             <td>Last modified</td>
             <td>{$last-modified}</td>
+        </tr>
+        <tr>
+            <td>Last harvested</td>
+            <td>{$last-harvested}</td>
         </tr>
         <tr>
             <td>Letters</td>
