@@ -38,6 +38,10 @@ let $result :=
     then csharv:register($url)
     else if ($id='deregister')
     then csharv:deregister($url)
+    else if ($id='disable')
+    then csharv:disable($url)
+    else if ($id='enable')
+    then csharv:enable($url)
     else if ($id='clear-reports')
     then csharv:clear-reports()
     else ()
@@ -340,6 +344,13 @@ declare %templates:wrap function app:cmif-file-action-update($node as node(), $m
     <a href="?id=update&amp;url={$url}"><i class="fas fa-sync-alt"/></a>
 };
 
+declare %templates:wrap function app:cmif-file-action-disable($node as node(), $model as map(*)) {
+    let $url := $model("file")/@url/data(.)
+    return
+        if ($csharv:cmif-file-index//file[@url=$url]/@disabled)
+        then <a style="color: #B72222;" href="?id=enable&amp;url={$url}"><i class="fas fa-times-circle"/></a>
+        else <a href="?id=disable&amp;url={$url}"><i class="fas fa-check"/></a>
+};
 
 declare %templates:wrap function app:cmif-file-action-delete($node as node(), $model as map(*)) {
     let $url := $model("file")/@url/data(.)

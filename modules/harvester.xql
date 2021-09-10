@@ -84,7 +84,19 @@ declare function csharv:startLog($type) {
             map {
                 'type' : 'report',
                 'label' : 'Start creating report' 
-            }      
+            } 
+        else if ($type='disable')
+        then
+            map {
+                'type' : 'disable',
+                'label' : 'Start disabling sequence' 
+            }
+        else if ($type='enable')
+        then
+            map {
+                'type' : 'enable',
+                'label' : 'Start enabling sequence' 
+            }     
         else ()
     return
     csharv:write-log(
@@ -134,7 +146,19 @@ declare function csharv:endLog() {
             map {
                 'type' : 'report',
                 'label' : 'End creating report' 
-            }             
+            }
+        else if ($type='disable')
+        then
+            map {
+                'type' : 'disable',
+                'label' : 'End disabling URL' 
+            }
+        else if ($type='enable')
+        then
+            map {
+                'type' : 'enable',
+                'label' : 'End enabling URL' 
+            }    
         else ()
     return
     csharv:write-log(
@@ -225,6 +249,15 @@ declare function csharv:checkIfRegistered($url as xs:string) as xs:boolean {
         if ($csharv:cmif-file-index//file/@url=$url)
         then <error  type="alreadyRegistered" url="{$url}">URL already registered</error>
         else <trace url="{$url}">URL not yet registered</trace>
+    return
+    csharv:check($test)
+};
+
+declare function csharv:checkIfDisabled($url as xs:string) as xs:boolean {
+    let $test := 
+        if ($csharv:cmif-file-index//file[@url=$url]/@disabled='yes')
+        then <error type="disabled" url="{$url}">URL {$url} is disabled for update</error>
+        else <trace url="{$url}">URL not disabled</trace>
     return
     csharv:check($test)
 };
@@ -429,26 +462,29 @@ declare function csharv:register-retrieve($url) {
 declare function csharv:get($url as xs:string) {
     if (csharv:checkURL($url))
     then 
-        if (csharv:checkStatusCode($url))
-        then 
-            if (csharv:checkHTTP304($url))
+        if (csharv:checkIfDisabled($url))
+        then
+            if (csharv:checkStatusCode($url))
             then 
-                if (csharv:checkWellformed($url))
+                if (csharv:checkHTTP304($url))
                 then 
-                    if (csharv:checkIdno($url))
-                    then
-                        if (csharv:checkValidation($url))
+                    if (csharv:checkWellformed($url))
+                    then 
+                        if (csharv:checkIdno($url))
                         then
-                            if (csharv:checkIfModified($url))
-                            then 
-                                if (csharv:store($url))
-                                then (<message type="success">CMIF file {$url} successfully stored.</message>)
-                                else csharv:getErrorMessage($url)
+                            if (csharv:checkValidation($url))
+                            then
+                                if (csharv:checkIfModified($url))
+                                then 
+                                    if (csharv:store($url))
+                                    then (<message type="success">CMIF file {$url} successfully stored.</message>)
+                                    else csharv:getErrorMessage($url)
+                                else (csharv:getErrorMessage($url))
                             else (csharv:getErrorMessage($url))
-                        else (csharv:getErrorMessage($url))
-                    else csharv:getErrorMessage($url)
-                else (csharv:getErrorMessage($url))
-            else (csharv:getErrorMessage($url))    
+                        else csharv:getErrorMessage($url)
+                    else (csharv:getErrorMessage($url))
+                else (csharv:getErrorMessage($url))    
+            else (csharv:getErrorMessage($url))
         else (csharv:getErrorMessage($url))
      else (csharv:getErrorMessage($url))  
 };
@@ -508,6 +544,50 @@ declare function csharv:deregister($url) {
     else csharv:getErrorMessage($url),        
     if (csharv:delete-file-entry($url))
     then <message type="success">URL: {$url} deleted from index</message> 
+    else csharv:getErrorMessage($url),
+    csharv:endLog())
+};
+
+declare function csharv:disable-file($url as xs:string) {
+let $disable-file :=
+    for $file-entry in $csharv:cmif-file-index//file[@url=$url]
+    return
+        update insert attribute disabled {'yes'} into $csharv:cmif-file-index//file[@url=$url]
+let $test :=
+    if ($csharv:cmif-file-index//file[@url=$url]/@disabled)
+    then <status type="disabled" url="{$url}">URL disabled</status> 
+    else <error type="failed" url="{$url}">URL could not be disabled</error>
+return
+csharv:check($test)
+};
+
+declare function csharv:enable-file($url as xs:string) {
+let $enable-file :=
+    for $file-entry in $csharv:cmif-file-index//file[@url=$url]/@disabled
+    return
+        update delete $csharv:cmif-file-index//file[@url=$url]/@disabled
+let $test :=
+    if ($csharv:cmif-file-index//file[@url=$url]/@disabled)
+    then <error type="failed" url="{$url}">URL could not be enabled</error>
+    else <status type="enabled" url="{$url}">URL enabled</status>
+return
+csharv:check($test)
+};
+
+declare function csharv:disable($url) {
+    (csharv:startLog('disable'),
+    csharv:write-log(<trace url="{$url}">Begin disable file {$url}</trace>), 
+    if (csharv:disable-file($url))
+    then <message type="success">URL: {$url} disabled</message> 
+    else csharv:getErrorMessage($url),
+    csharv:endLog())
+};
+
+declare function csharv:enable($url) {
+    (csharv:startLog('enable'),
+    csharv:write-log(<trace url="{$url}">Begin enable file {$url}</trace>), 
+    if (csharv:enable-file($url))
+    then <message type="success">URL: {$url} enabled</message>
     else csharv:getErrorMessage($url),
     csharv:endLog())
 };
