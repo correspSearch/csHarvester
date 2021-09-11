@@ -10,12 +10,13 @@
                         <tr>
                             <th>Title</th>
                             <th>Letters</th>
-                            <th>Added</th>
-                            <th>By</th> 
                             <th>Last Modified</th>
                             <th width="15%">Last Harvested</th>
                             <th>
-                                <i class="fas fa-file-alt"/>
+                                <i class="fas fa-exclamation-triangle"/>
+                            </th>
+                            <th>
+                                <i class="fas fa-certificate"/>
                             </th>
                             <th>
                                 <i class="fas fa-sync-alt"/>
@@ -30,11 +31,10 @@
                         <tr data-template="templates:each" data-template-from="files" data-template-to="file">
                             <td data-template="app:cmif-file-title"/>
                             <td data-template="app:cmif-file-count"/>
-                            <td data-template="app:cmif-file-when"/>
-                            <td data-template="app:cmif-file-by"/>
                             <td data-template="app:cmif-file-modified"/>
                             <td data-template="app:cmif-file-harvested"/>
-                            <td data-template="app:cmif-file-report"/>
+                            <td data-template="app:cmif-file-error"/>
+                            <td data-template="app:cmif-file-validation"/>
                             <td data-template="app:cmif-file-action-update"/>
                             <td data-template="app:cmif-file-action-disable"/>
                             <td data-template="app:cmif-file-action-delete"/>

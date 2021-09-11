@@ -299,12 +299,20 @@ declare %templates:wrap function app:cmif-file-title($node as node(), $model as 
     let $title := collection($config:data-root)//tei:TEI[.//tei:idno/normalize-space(.)=$url]//tei:titleStmt/tei:title/text()
     return
     if ($title)
-    then 
+    then ( 
+        element a {
+            attribute href { 'report.html?url='||$url },
+            $title 
+        },
+        '&#160;',
         element a {
             attribute href { $url },
-            $title 
-        }
+            attribute target {'_blank' },
+            <i class="far fa-file-code"/>
+        })
     else ('-')
+    
+    
 };
 
 declare %templates:wrap function app:cmif-file-count($node as node(), $model as map(*)) {
@@ -316,13 +324,13 @@ declare %templates:wrap function app:cmif-file-count($node as node(), $model as 
     else ('-')
 };
 
-declare %templates:wrap function app:cmif-file-when($node as node(), $model as map(*)) {
+(:   declare %templates:wrap function app:cmif-file-when($node as node(), $model as map(*)) {
     app:format-date($model("file")/@added-when/data(.), 'date')
 };
 
 declare %templates:wrap function app:cmif-file-by($node as node(), $model as map(*)) {
     $model("file")/@added-by/data(.)
-};
+}; :)
 
 declare %templates:wrap function app:cmif-file-modified($node as node(), $model as map(*)) {
     let $url := $model("file")/@url/data(.)
@@ -338,6 +346,27 @@ declare %templates:wrap function app:cmif-file-harvested($node as node(), $model
         app:format-date($date, 'all')
 };
 
+declare %templates:wrap function app:cmif-file-error($node as node(), $model as map(*)) {
+    let $url := $model("file")/@url/data(.)
+    let $last-action := $csharv:log//action[.//@url=$url][last()]
+    let $last-action-id := $last-action/@id/data(.)
+    let $error := $last-action/error[@url=$url]
+    return
+    if ($error)    
+    then <a class="alert-color" href="action.html?id={$last-action-id}"><i class="fas fa-exclamation-triangle"/></a>    
+    else ()
+};
+
+declare %templates:wrap function app:cmif-file-validation($node as node(), $model as map(*)) {
+    let $url := $model("file")/@url/data(.)
+    let $report := collection($csharv:reports)//report[file-id=$url]
+    let $invalid := $report//validation/report/status="invalid"
+    return
+    if ($invalid)    
+    then <a class="warning-color" href="report.html?url={$url}"><i class="fas fa-exclamation"/></a>    
+    else ()
+};
+
 declare %templates:wrap function app:cmif-file-action-update($node as node(), $model as map(*)) {
     let $url := $model("file")/@url/data(.)
     return
@@ -348,7 +377,7 @@ declare %templates:wrap function app:cmif-file-action-disable($node as node(), $
     let $url := $model("file")/@url/data(.)
     return
         if ($csharv:cmif-file-index//file[@url=$url]/@disabled)
-        then <a style="color: #B72222;" href="?id=enable&amp;url={$url}"><i class="fas fa-times-circle"/></a>
+        then <a class="alert-color" href="?id=enable&amp;url={$url}"><i class="fas fa-times-circle"/></a>
         else <a href="?id=disable&amp;url={$url}"><i class="fas fa-check"/></a>
 };
 
@@ -359,12 +388,6 @@ declare %templates:wrap function app:cmif-file-action-delete($node as node(), $m
 };
 
 (: Report on CMIF file :)
-declare %templates:wrap function app:cmif-file-report($node as node(), $model as map(*)) {
-    let $url := $model("file")/@url/data(.)
-    return
-    <a href="report.html?url={$url}"><i class="fas fa-file-alt"/></a>
-};
-
 declare %templates:wrap function app:get-report($node as node(), $model as map(*), $url as xs:string, $force as xs:string*) as map(*) {
     let $report :=
         if ($force='yes')

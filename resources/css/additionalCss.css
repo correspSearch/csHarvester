@@ -508,3 +508,11 @@ figure figcaption {
     font-family: PTSans;
     font-size: 0.8em;
 }
+
+a.alert-color {
+    color: #B72222;
+}
+
+a.warning-color {
+    color: #ffa100;
+}
