@@ -44,6 +44,8 @@ let $result :=
     then csharv:enable($url)
     else if ($id='clear-reports')
     then csharv:clear-reports()
+    else if ($id='update-last-indexed')
+    then csharv:update-last-indexed-all()
     else ()
 
 return
@@ -343,7 +345,19 @@ declare %templates:wrap function app:cmif-file-harvested($node as node(), $model
     let $url := $model("file")/@url/data(.)
     let $date := collection($csharv:cmif-file-index)//file[@url=$url]/@last-harvested/data(.) 
     return
-        app:format-date($date, 'all')
+        if (current-dateTime() > xs:dateTime($date) + xs:yearMonthDuration("P1M"))
+        then <span class="alert-color">{app:format-date($date, 'all')}</span>
+        else app:format-date($date, 'all')
+};
+
+declare %templates:wrap function app:cmif-file-indexed($node as node(), $model as map(*)) {
+    let $url := $model("file")/@url/data(.)
+    let $date := collection($csharv:cmif-file-index)//file[@url=$url]/@last-indexed/data(.) 
+    let $modified := collection($csharv:data)//tei:publicationStmt[.//tei:idno/normalize-space(.)=$url]/tei:date/@when/data(.)
+    return
+        if ($modified > $date)
+        then <span class="alert-color">{app:format-date($date, 'all')}</span>
+        else app:format-date($date, 'all')
 };
 
 declare %templates:wrap function app:cmif-file-error($node as node(), $model as map(*)) {
