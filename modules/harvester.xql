@@ -1,4 +1,4 @@
-xquery version "3.0";
+xquery version "3.1";
 
 (:  
     correspSearch Harvester
@@ -7,6 +7,7 @@ xquery version "3.0";
 module namespace csharv="https://correspSearch.net/harvester";
 
 import module namespace cs="http://www.bbaw.de/telota/correspSearch" at "correspSearch.xql";
+import module namespace jx="http://joewiz.org/ns/xquery/json-xml" at "json-xml.xqm";
 
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 declare namespace httpclient="http://exist-db.org/xquery/httpclient";
@@ -96,7 +97,13 @@ declare function csharv:startLog($type) {
             map {
                 'type' : 'enable',
                 'label' : 'Start enabling sequence' 
-            }     
+            }
+        else if ($type='last-indexed')
+        then
+            map {
+                'type' : 'last-indexed',
+                'label' : 'Start retreving last-indexed-date from elasticsearch' 
+            }    
         else ()
     return
     csharv:write-log(
@@ -158,7 +165,13 @@ declare function csharv:endLog() {
             map {
                 'type' : 'enable',
                 'label' : 'End enabling URL' 
-            }    
+            }
+        else if ($type='last-indexed')
+        then
+            map {
+                'type' : 'last-indexed',
+                'label' : 'End retreving last-indexed-date(s) from elasticsearch' 
+            }            
         else ()
     return
     csharv:write-log(
@@ -695,4 +708,54 @@ declare function csharv:clear-reports() {
         xmldb:remove($csharv:reports, $filename)
     return
     ()
+};
+
+declare function csharv:get-index-info($url as xs:string) {
+    let $elasticsearch := 'https://telotawebdev.bbaw.de/cs_es_dev/letters/_search'
+(:    let $query := 
+        map {
+            "size" := 1,
+            "query" := 
+                map {
+                    "bool" :=
+                        map {
+                            "must" := 
+                                map {
+                                    "term" := 
+                                        map {
+                                            "cmif_idno" := $url }}}}}:)
+    let $query := concat('{"size": 1,"query": {"bool": {"must": [{"term": {"cmif_idno": "', $url, '"}}]}}}') 
+    let $request := httpclient:post($elasticsearch, $query, false(), <headers><header name="Content-Type" value="application/json"/></headers>)      
+    let $body := util:base64-decode($request//httpclient:body/text())
+    let $x := jx:json-to-xml($body)
+    return
+    $x
+};
+
+declare function csharv:update-last-indexed($url as xs:string) {
+    let $last-indexed := csharv:get-index-info($url)//*:string[@key="last_indexed"]/text()
+    let $test :=
+        if ($last-indexed)
+        then <status type="last-indexed-available" url="{$url}">Last-indexed date successfully retrieved</status>
+        else <status type="last-indexed-not-available" url="{$url}">Last-indexed date not available</status> 
+    let $update :=
+        if ($last-indexed)
+        then 
+         (update insert attribute last-indexed { $last-indexed } into $csharv:cmif-file-index//file[@url=$url],
+          if (collection($csharv:reports)//report/file-id=$url)
+          then update insert element file-last-indexed { $last-indexed } following collection($csharv:reports)//report[file-id=$url]/file-last-modified
+          else ())
+        else ()
+    return
+    if (csharv:check($test))
+    then <message type="success">Last-indexed-date for {$url} succesfully retrieved.</message>
+    else <message type="error">Last-indexed-date for {$url} not retrieved.</message>
+};
+
+declare function csharv:update-last-indexed-all() {
+    csharv:startLog('last-indexed'),
+    for $file in $csharv:cmif-file-index/file
+    return
+    csharv:update-last-indexed($file/@url/data(.)),
+    csharv:endLog()
 };

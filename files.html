@@ -10,8 +10,9 @@
                         <tr>
                             <th>Title</th>
                             <th>Letters</th>
-                            <th>Last Modified</th>
-                            <th width="15%">Last Harvested</th>
+                            <th>Modified</th>
+                            <th width="15%">Harvested</th>
+                            <th width="15%">Indexed</th>
                             <th>
                                 <i class="fas fa-exclamation-triangle"/>
                             </th>
@@ -33,6 +34,7 @@
                             <td data-template="app:cmif-file-count"/>
                             <td data-template="app:cmif-file-modified"/>
                             <td data-template="app:cmif-file-harvested"/>
+                            <td data-template="app:cmif-file-indexed"/>
                             <td data-template="app:cmif-file-error"/>
                             <td data-template="app:cmif-file-validation"/>
                             <td data-template="app:cmif-file-action-update"/>
@@ -43,6 +45,9 @@
                     
                     <form method="post">
                         <button type="submit" class="btn cs-button" name="id" value="clear-reports">Clear all reports</button>
+                    </form>
+                    <form method="post">
+                        <button type="submit" class="btn cs-button" name="id" value="update-last-indexed">Update all indexed-dates from Elasticsearch</button>
                     </form>
                 </div>
             </div>

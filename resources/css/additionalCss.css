@@ -509,6 +509,7 @@ figure figcaption {
     font-size: 0.8em;
 }
 
+span.alert-color,
 a.alert-color {
     color: #B72222;
 }
