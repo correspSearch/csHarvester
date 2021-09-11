@@ -297,7 +297,9 @@ declare function csharv:checkHTTP304($url as xs:string) as xs:boolean {
         if ($csharv:force="yes" and $request//@statusCode="304")
         then <trace url="{$url}">Not modified (HTTP-Header 304) but update forced.</trace>
         else if ($request//@statusCode="304")
-        then <status type="notModified" url="{$url}">CMIF file {$url} NOT modified (HTTP-Header 304).</status>
+        then 
+            (csharv:insert-file-harvested($url),
+            <status type="notModified" url="{$url}">CMIF file {$url} NOT modified (HTTP-Header 304).</status>)
         else <trace url="{$url}">Modified or HTTP information about modification not available.</trace>
     
     return
@@ -369,7 +371,9 @@ declare function csharv:checkIfModified($url) as xs:boolean {
             then <trace url="{$url}">Modified</trace>
             else if ($csharv:force='yes')
             then <trace url="{$url}">Not modified but update forced.</trace>
-            else <status type="notModified" url="{$url}">CMIF file {$url} NOT modified.</status>
+            else (
+                csharv:insert-file-harvested($url),
+                <status type="notModified" url="{$url}">CMIF file {$url} NOT modified.</status>)
         else <trace url="{$url}">New CMIF file {$url}</trace>
     return
     csharv:check($test)
@@ -402,7 +406,7 @@ declare function csharv:insert-file-entry($url as xs:string) {
     csharv:check($test)
 };
 
-declare function csharv:insert-file-update($url as xs:string) {
+declare function csharv:insert-file-harvested($url as xs:string) {
     update insert attribute last-harvested { current-dateTime() } into doc($csharv:cmif-file-index-path)//file[@url=$url]
 };  
 
@@ -412,7 +416,7 @@ declare function csharv:store($url) {
     let $test := 
         if (xmldb:store($csharv:data, $filename, $doc))
         then (           
-            csharv:insert-file-update($url),
+            csharv:insert-file-harvested($url),
             <status type="stored" url="{$url}">Successfully stored</status>
             
             )
