@@ -300,11 +300,11 @@ declare %templates:wrap function app:cmif-file-title($node as node(), $model as 
     let $url := $model("file")/@url/data(.)
     let $title := collection($config:data-root)//tei:TEI[.//tei:idno/normalize-space(.)=$url]//tei:titleStmt/tei:title/text()
     return
-    if ($title)
-    then ( 
-        element a {
+        (element a {
             attribute href { 'report.html?url='||$url },
-            $title 
+            if ($title)
+            then $title 
+            else $url
         },
         '&#160;',
         element a {
@@ -312,9 +312,6 @@ declare %templates:wrap function app:cmif-file-title($node as node(), $model as 
             attribute target {'_blank' },
             <i class="far fa-file-code"/>
         })
-    else ('-')
-    
-    
 };
 
 declare %templates:wrap function app:cmif-file-count($node as node(), $model as map(*)) {
