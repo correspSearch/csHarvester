@@ -784,6 +784,7 @@ declare function csharv:get-idnos-from-elasticsearch() {
 declare function csharv:compare-idnos-with-elasticsearch(){
     let $update := csharv:get-idnos-from-elasticsearch()
     return
+   (
     for $url in doc('/db/apps/csHarvester/data/logs/idnos-in-elasticsearch.xml')//*:array[@key="buckets"]//*:string/text()
     let $harvested := $csharv:cmif-file-index//@url=$url
     let $test :=
@@ -793,7 +794,18 @@ declare function csharv:compare-idnos-with-elasticsearch(){
     return
     if (csharv:check($test))
     then <message type="trace">URL {$url} available.</message>
-    else <message type="error">CMIF file {$url} NOT available in csHarvester, but in Elasticsearch!</message>
+    else <message type="error">CMIF file {$url} NOT available in csHarvester, but in Elasticsearch!</message>,
+    for $url in $csharv:cmif-file-index//@url/data(.)
+    let $indexed := doc('/db/apps/csHarvester/data/logs/idnos-in-elasticsearch.xml')//*:array[@key="buckets"]//*:string[.=$url] 
+    let $test :=
+        if ($indexed)
+        then <status type="indexed" url="{$url}">URL indexed in Elasticsearch.</status>
+        else <error type="not-indexed" url="{$url}">URL available in csHarvester, but NOT indexed in Elasticsearch!</error> 
+    return
+    if (csharv:check($test))
+    then <message type="trace">URL {$url} indexed.</message>
+    else <message type="error">CMIF file {$url} available in csHarvester, but NOT indexed in Elasticsearch!</message>
+    )
 };
 
 declare function csharv:compare-idnos() {
