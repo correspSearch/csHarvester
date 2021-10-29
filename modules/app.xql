@@ -46,6 +46,8 @@ let $result :=
     then csharv:clear-reports()
     else if ($id='update-last-indexed')
     then csharv:update-last-indexed-all()
+    else if ($id='compare-idnos')
+    then csharv:compare-idnos()
     else ()
 
 return

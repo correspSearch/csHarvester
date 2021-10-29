@@ -21,6 +21,7 @@ declare variable $csharv:logs := '/apps/csHarvester/data/logs';
 declare variable $csharv:log-file := $csharv:logs||'/log.xml';
 declare variable $csharv:log := csharv:load-logfile();
 declare variable $csharv:schema := xs:anyURI('../data/schema/cmif.rng');
+declare variable $csharv:elasticsearch := xs:anyURI('https://telotawebdev.bbaw.de/cs_es_dev/letters/_search');
 
 declare variable $csharv:loglevel := request:get-parameter('loglevel', 'default');
 declare variable $csharv:validation := request:get-parameter('validation', 'yes');
@@ -104,6 +105,12 @@ declare function csharv:startLog($type) {
                 'type' : 'last-indexed',
                 'label' : 'Start retreving last-indexed-date from elasticsearch' 
             }    
+        else if ($type='compare-idnos')
+        then
+            map {
+                'type' : 'compare-idnos',
+                'label' : 'Start comparing CMIF files URLs (idno) with elasticsearch' 
+            }    
         else ()
     return
     csharv:write-log(
@@ -171,6 +178,12 @@ declare function csharv:endLog() {
             map {
                 'type' : 'last-indexed',
                 'label' : 'End retreving last-indexed-date(s) from elasticsearch' 
+            }            
+        else if ($type='compare-idnos')
+        then
+            map {
+                'type' : 'compare-idnos',
+                'label' : 'End comparing CMIF files URLs (idno) with elasticsearch' 
             }            
         else ()
     return
@@ -710,22 +723,13 @@ declare function csharv:clear-reports() {
     ()
 };
 
+(: LAST-INDEXED 
+ : Get information if and when the CMIF file was last-indexed by Elasticsearch :)
+
+
 declare function csharv:get-index-info($url as xs:string) {
-    let $elasticsearch := 'https://telotawebdev.bbaw.de/cs_es_dev/letters/_search'
-(:    let $query := 
-        map {
-            "size" := 1,
-            "query" := 
-                map {
-                    "bool" :=
-                        map {
-                            "must" := 
-                                map {
-                                    "term" := 
-                                        map {
-                                            "cmif_idno" := $url }}}}}:)
     let $query := concat('{"size": 1,"query": {"bool": {"must": [{"term": {"cmif_idno": "', $url, '"}}]}}}') 
-    let $request := httpclient:post($elasticsearch, $query, false(), <headers><header name="Content-Type" value="application/json"/></headers>)      
+    let $request := httpclient:post($csharv:elasticsearch, $query, false(), <headers><header name="Content-Type" value="application/json"/></headers>)      
     let $body := util:base64-decode($request//httpclient:body/text())
     let $x := jx:json-to-xml($body)
     return
@@ -757,5 +761,43 @@ declare function csharv:update-last-indexed-all() {
     for $file in $csharv:cmif-file-index/file
     return
     csharv:update-last-indexed($file/@url/data(.)),
+    csharv:endLog()
+};
+
+(: INDEXED but not harvested :)
+
+declare function csharv:elasticsearch-all-idnos() {
+    let $query := '{"size": 0, "aggregations": {"cmif_idno": { "terms": { "field": "cmif_idno", "size": 500 }}}}' 
+    let $request := httpclient:post($csharv:elasticsearch, $query, false(), <headers><header name="Content-Type" value="application/json"/></headers>)      
+    let $body := util:base64-decode($request//httpclient:body/text())
+    let $x := jx:json-to-xml($body)
+    return
+    $x
+};
+
+declare function csharv:get-idnos-from-elasticsearch() {
+    let $data := element idnos { csharv:elasticsearch-all-idnos() }
+    return
+    xmldb:store('/db/apps/csHarvester/data/logs', 'idnos-in-elasticsearch.xml', $data)
+};
+
+declare function csharv:compare-idnos-with-elasticsearch(){
+    let $update := csharv:get-idnos-from-elasticsearch()
+    return
+    for $url in doc('/db/apps/csHarvester/data/logs/idnos-in-elasticsearch.xml')//*:array[@key="buckets"]//*:string/text()
+    let $harvested := $csharv:cmif-file-index//@url=$url
+    let $test :=
+        if ($harvested)
+        then <status type="harvested" url="{$url}">URL available in csHarvester</status>
+        else <error type="not-harvested" url="{$url}">URL NOT available in csHarvester, but in Elasticsearch!</error> 
+    return
+    if (csharv:check($test))
+    then <message type="trace">URL {$url} available.</message>
+    else <message type="error">CMIF file {$url} NOT available in csHarvester, but in Elasticsearch!</message>
+};
+
+declare function csharv:compare-idnos() {
+    csharv:startLog('compare-idnos'),
+    csharv:compare-idnos-with-elasticsearch(),
     csharv:endLog()
 };
