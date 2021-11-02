@@ -844,7 +844,7 @@ declare function csharv:request-start-ingest($url as xs:string) {
         else <error type="ingest-unknown">Unknown error in csIngest.</error>
     return
     if (csharv:check($test))
-    then <message type="success">Ingest started for URL {$url}. See <a href="?id=check-ingest-job&amp;url={$url}&amp;ingest-job-id={$job-id}&amp;_cache=no">Check job status</a>.</message>
+    then <message type="success">Ingest started for URL {$url}. <a href="?id=check-ingest-job&amp;url={$url}&amp;ingest-job-id={$job-id}&amp;_cache=no">Check job status</a>.</message>
     else <message type="error">csIngest is already occupied or not available.</message>
 };
 
