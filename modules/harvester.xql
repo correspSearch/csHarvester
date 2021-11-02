@@ -328,8 +328,8 @@ declare function csharv:checkStatusCode($url as xs:string) as xs:boolean {
 (: Updating inkl. Tests :)
 
 declare function csharv:checkHTTP304($url as xs:string) as xs:boolean {
-    let $last-update := $csharv:log//log/action[./status/@url=$url][last()]/status[@url=$url]/@timestamp/data(.)
-    let $adjusted-date := fn:adjust-dateTime-to-timezone(xs:dateTime($last-update), xs:dayTimeDuration("-PT0H"))
+    let $last-harvested := $csharv:cmif-file-index//file[@url=$url]/@last-harvested
+    let $adjusted-date := fn:adjust-dateTime-to-timezone(xs:dateTime($last-harvested), xs:dayTimeDuration("-PT0H"))
     let $http-date := format-dateTime($adjusted-date, "[FNn, *-3], [D] [MNn, *-3] [Y] [H]:[m]:[s] GMT", "en", (), ())
     let $params := <headers><header name="If-Modified-Since" value="{$http-date}"></header></headers>
     let $request := httpclient:head($url, true(), $params)
