@@ -22,6 +22,8 @@ declare variable $csharv:log-file := $csharv:logs||'/log.xml';
 declare variable $csharv:log := csharv:load-logfile();
 declare variable $csharv:schema := xs:anyURI('../data/schema/cmif.rng');
 declare variable $csharv:elasticsearch := xs:anyURI('https://telotawebdev.bbaw.de/cs_es_dev/letters/_search');
+declare variable $csharv:csIngest := 'https://telotawebdev.bbaw.de/csjobs/';
+declare variable $csharv:csIngest-api-key := 'GktthcPwnzG8wA5LPgdt5R';
 
 declare variable $csharv:loglevel := request:get-parameter('loglevel', 'default');
 declare variable $csharv:validation := request:get-parameter('validation', 'yes');
@@ -110,7 +112,13 @@ declare function csharv:startLog($type) {
             map {
                 'type' : 'compare-idnos',
                 'label' : 'Start comparing CMIF files URLs (idno) with elasticsearch' 
-            }    
+            }
+        else if ($type='ingest')
+        then
+            map {
+                'type' : 'ingest',
+                'label' : 'Start ingest' 
+            }        
         else ()
     return
     csharv:write-log(
@@ -184,7 +192,13 @@ declare function csharv:endLog() {
             map {
                 'type' : 'compare-idnos',
                 'label' : 'End comparing CMIF files URLs (idno) with elasticsearch' 
-            }            
+            }    
+        else if ($type='ingest')
+        then
+            map {
+                'type' : 'ingest',
+                'label' : 'End ingest start sequence' 
+            }                
         else ()
     return
     csharv:write-log(
@@ -811,5 +825,44 @@ declare function csharv:compare-idnos-with-elasticsearch(){
 declare function csharv:compare-idnos() {
     csharv:startLog('compare-idnos'),
     csharv:compare-idnos-with-elasticsearch(),
+    csharv:endLog()
+};
+
+(: Start ingest in csIngest :)
+
+declare function csharv:request-start-ingest($url as xs:string) {
+    let $query := concat('{"task": "ingest_cmif", "cmif_idno": "', $url ,'" }') 
+    let $request := httpclient:post(xs:anyURI($csharv:csIngest||'/ingest-job?api_key='||$csharv:csIngest-api-key), $query, false(), <headers><header name="Content-Type" value="application/json"/></headers>)      
+    let $response-body := util:base64-decode($request//httpclient:body/text())
+    let $body-xml := jx:json-to-xml($response-body)
+    let $job-id := $body-xml//*[@key="task_id"]/text()
+    let $test := 
+        if ($request/@statusCode='201')
+        then <status type="ingest" url="{$url}">Ingest started with job-ID {$job-id}.</status>
+        else if (not($job-id))
+        then <error type="ingest-occupied" url="{$url}">Ingest already occupied.</error>
+        else <error type="ingest-unknown">Unknown error in csIngest.</error>
+    return
+    if (csharv:check($test))
+    then <message type="success">Ingest started for URL {$url}. See <a href="?id=check-ingest-job&amp;url={$url}&amp;ingest-job-id={$job-id}&amp;_cache=no">Check job status</a>.</message>
+    else <message type="error">csIngest is already occupied or not available.</message>
+};
+
+declare function csharv:check-ingest-job-status($url as xs:string, $job-id as xs:string) {
+    let $request := httpclient:get(xs:anyURI($csharv:csIngest||'/ingest-job/'||$job-id||'?api_key='||$csharv:csIngest-api-key), false(), <headers><header name="Content-Type" value="application/json"/></headers>)      
+    let $response-body := util:base64-decode($request//httpclient:body/text())
+    let $body-xml := jx:json-to-xml($response-body)
+    let $finished := matches($body-xml//*[@key='status']/text(), 'Finished')
+    return
+    if ($finished)    
+    then <message type="success">Finished succesfully ingest job for URL {$url}.</message>
+    else if (matches($body-xml//*[@key='status']/text(), 'ERROR'))
+    then <message type="error">Error in ingest job for {$url}. <a href="{$csharv:csIngest||'/ingest-job/'||$job-id||'?api_key='||$csharv:csIngest-api-key}" target="_blank">See job status</a>.</message>
+    else <message type="status">Ingest job is still busy with URL {$url}. <a href="?id=check-ingest-job&amp;url={$url}&amp;ingest-job-id={$job-id}&amp;_cache=no">Check again</a>.</message>
+};
+
+declare function csharv:start-ingest($url as xs:string) {
+    csharv:startLog('ingest'),
+    csharv:request-start-ingest($url),
     csharv:endLog()
 };

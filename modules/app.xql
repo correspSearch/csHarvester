@@ -24,6 +24,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare function app:actions($node as node(), $model as map(*)) as map(*) {
 let $id := request:get-parameter('id', ())
 let $url := request:get-parameter('url', ())
+let $ingest-job-id := request:get-parameter('ingest-job-id', ())
 
 let $result :=
     if ($id='update-all')
@@ -48,6 +49,10 @@ let $result :=
     then csharv:update-last-indexed-all()
     else if ($id='compare-idnos')
     then csharv:compare-idnos()
+    else if ($id='ingest')
+    then csharv:start-ingest($url)
+    else if ($id='check-ingest-job')
+    then csharv:check-ingest-job-status($url, $ingest-job-id)
     else ()
 
 return
@@ -384,6 +389,12 @@ declare %templates:wrap function app:cmif-file-action-update($node as node(), $m
     let $url := $model("file")/@url/data(.)
     return
     <a href="?id=update&amp;url={$url}"><i class="fas fa-sync-alt"/></a>
+};
+
+declare %templates:wrap function app:cmif-file-action-ingest($node as node(), $model as map(*)) {
+    let $url := $model("file")/@url/data(.)
+    return
+    <a href="?id=ingest&amp;url={$url}"><i class="fas fa-database"/></a>
 };
 
 declare %templates:wrap function app:cmif-file-action-disable($node as node(), $model as map(*)) {

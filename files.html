@@ -14,19 +14,22 @@
                             <th width="15%">Harvested</th>
                             <th width="15%">Indexed</th>
                             <th>
-                                <i class="fas fa-exclamation-triangle"/>
+                                <i class="fas fa-exclamation-triangle" title="Errors during last update"/>
                             </th>
                             <th>
-                                <i class="fas fa-certificate"/>
+                                <i class="fas fa-certificate" title="Validation errors"/>
                             </th>
                             <th>
-                                <i class="fas fa-sync-alt"/>
+                                <i class="fas fa-sync-alt" title="Harvest"/>
                             </th>
                             <th>
-                                <i class="fas fa-check"/>
+                                <i class="fas fa-database" title="Start ingest"/>
                             </th>
                             <th>
-                                <i class="fas fa-trash"/>
+                                <i class="fas fa-check" title="Update enabled/disabled"/>
+                            </th>
+                            <th>
+                                <i class="fas fa-trash" title="Delete CMIF entry"/>
                             </th>
                         </tr>
                         <tr data-template="templates:each" data-template-from="files" data-template-to="file">
@@ -38,18 +41,14 @@
                             <td data-template="app:cmif-file-error"/>
                             <td data-template="app:cmif-file-validation"/>
                             <td data-template="app:cmif-file-action-update"/>
+                            <td data-template="app:cmif-file-action-ingest"/>
                             <td data-template="app:cmif-file-action-disable"/>
                             <td data-template="app:cmif-file-action-delete"/>
                         </tr>
                     </table>
-                    
                     <form method="post">
                         <button type="submit" class="btn cs-button" name="id" value="clear-reports">Clear all reports</button>
-                    </form>
-                    <form method="post">
                         <button type="submit" class="btn cs-button" name="id" value="update-last-indexed">Update all indexed-dates from Elasticsearch</button>
-                    </form>
-                    <form method="post">
                         <button type="submit" class="btn cs-button" name="id" value="compare-idnos">Compare CMIF-URLs (idno) with Elasticsearch</button>
                     </form>
                 </div>
