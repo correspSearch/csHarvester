@@ -5,6 +5,8 @@ module namespace app="https://correspSearch.net/apps/harvester/templates";
 import module namespace templates="http://exist-db.org/xquery/templates" ;
 import module namespace config="https://correspSearch.net/apps/harvester/config" at "config.xqm";
 import module namespace csharv="https://correspSearch.net/harvester" at "harvester.xql";
+import module namespace jx="http://joewiz.org/ns/xquery/json-xml" at "json-xml.xqm";
+
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
@@ -512,3 +514,32 @@ declare function app:report-ids($node as node(), $model as map(*)) {
     }
 };
 
+declare function app:report-ingest($node as node(), $model as map(*)) {
+    let $report := $model("result")
+    let $url := $report/file-id/text()
+    let $last-ingest-log-entry := doc($csharv:log-file)//action[./status[@type='ingest' and @url=$url]][last()]
+    let $job-id := $last-ingest-log-entry/status/@job_id/data(.)
+    let $request := 
+        if ($job-id)
+        then httpclient:get(xs:anyURI($csharv:csIngest||'/ingest-job/'||$job-id||'?api_key='||$csharv:csIngest-api-key), false(), <headers><header name="Content-Type" value="application/json"/></headers>)
+        else ()
+    let $response-body := util:base64-decode($request//httpclient:body/text())
+    let $body-xml := 
+        if ($response-body)
+        then jx:json-to-xml($response-body)
+        else ()
+    let $job-status := $body-xml//*[@key='status']/text()
+    let $clean-job-status := '<p>'||replace(replace(replace($job-status, '<', '"'), '>', '"'), '\n', '<br/>')||'</p>'
+    let $job-log := parse-xml($clean-job-status)
+    return
+        (element h2 {'Last ingest log'},    
+        if ($job-id)
+        then 
+            if ($job-log)
+            then
+                $job-log
+            else
+                element p {'Job log not available'}
+        else 
+            element p {'Job-id not available'})
+};

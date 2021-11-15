@@ -838,7 +838,7 @@ declare function csharv:request-start-ingest($url as xs:string) {
     let $job-id := $body-xml//*[@key="job_id"]/text()
     let $test := 
         if ($request/@statusCode='201')
-        then <status type="ingest" url="{$url}">Ingest started with job-ID {$job-id}.</status>
+        then <status type="ingest" url="{$url}" job_id="{$job-id}">Ingest started with job-ID {$job-id}.</status>
         else if (not($job-id))
         then <error type="ingest-occupied" url="{$url}">Ingest already occupied.</error>
         else <error type="ingest-unknown">Unknown error in csIngest.</error>
