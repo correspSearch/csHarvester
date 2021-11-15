@@ -516,6 +516,13 @@ declare function app:report-ids($node as node(), $model as map(*)) {
             element td { $feature-set/feature[@key='no-ref']/@value/data(.) },
             element td { $feature-set/feature[@key='no-ref-share']/@value/data(.) }
         }
+    },
+    element a {
+            attribute href { 'https://correspsearch.net/api/v1.2/services/cmif-preview.xql?url='||$model("result")/file-id/text()}, 
+            attribute target { '_blank' },
+            attribute class {'btn cs-button'},
+            attribute role {'button'},
+            'Show CMIF preview'
     }
 };
 
