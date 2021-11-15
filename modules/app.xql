@@ -438,6 +438,7 @@ declare function app:report-title($node as node(), $model as map(*)) {
     let $title := $report/file-title/text()
     let $last-modified := app:format-date($report/file-last-modified/text(), 'all')
     let $last-harvested := app:format-date($report/file-last-harvested/text(), 'all')
+    let $last-indexed := app:format-date($report/file-last-indexed/text(), 'all')
     let $editors := 
         for $editor in $model("result")//file-editors/editor
         return
@@ -470,6 +471,10 @@ declare function app:report-title($node as node(), $model as map(*)) {
         <tr>
             <td>Last harvested</td>
             <td>{$last-harvested}</td>
+        </tr>
+        <tr>
+            <td>Last indexed</td>
+            <td>{$last-indexed}</td>
         </tr>
         <tr>
             <td>Letters</td>

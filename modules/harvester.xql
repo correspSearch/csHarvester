@@ -713,6 +713,7 @@ declare function csharv:createReport($url) {
         <file-editors>{$editors}</file-editors>
         <file-last-modified>{$file//tei:publicationStmt/tei:date/@when/data(.)}</file-last-modified>
         <file-last-harvested>{$csharv:cmif-file-index//file[@url=$url]/@last-harvested/data(.)}</file-last-harvested>
+        <file-last-indexed>{$csharv:cmif-file-index//file[@url=$url]/@last-indexed/data(.)}</file-last-indexed>
         <file-stored>{if (collection($csharv:data)//tei:TEI[.//tei:idno/normalize-space(.)=$url]) then 'yes' else 'no'}</file-stored>
         <validation>
             {$validation-report}
