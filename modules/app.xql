@@ -319,8 +319,15 @@ declare %templates:wrap function app:cmif-file-title($node as node(), $model as 
         element a {
             attribute href { $url },
             attribute target {'_blank' },
-            <i class="far fa-file-code"/>
-        })
+            <i class="far fa-file-code" title="Show original CMIF file" />
+        },
+        '&#160;',
+        element a {
+            attribute href { 'https://correspsearch.net/de/suche.html?c='||$url },
+            attribute target {'_blank' },
+            <i class="fas fa-search" title="Show CMIF file in search result" />
+        }
+        )
 };
 
 declare %templates:wrap function app:cmif-file-count($node as node(), $model as map(*)) {
