@@ -835,7 +835,7 @@ declare function csharv:request-start-ingest($url as xs:string) {
     let $request := httpclient:post(xs:anyURI($csharv:csIngest||'/ingest-job?api_key='||$csharv:csIngest-api-key), $query, false(), <headers><header name="Content-Type" value="application/json"/></headers>)      
     let $response-body := util:base64-decode($request//httpclient:body/text())
     let $body-xml := jx:json-to-xml($response-body)
-    let $job-id := $body-xml//*[@key="task_id"]/text()
+    let $job-id := $body-xml//*[@key="job_id"]/text()
     let $test := 
         if ($request/@statusCode='201')
         then <status type="ingest" url="{$url}">Ingest started with job-ID {$job-id}.</status>
