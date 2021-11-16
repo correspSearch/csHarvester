@@ -404,6 +404,10 @@ declare %templates:wrap function app:pagination($node as node(), $model as map(*
 
 declare %templates:wrap function app:cmif-files($node as node(), $model as map(*)) as map(*) {
     (: Variables order-by ist Grund für Konstruktion mit util:eval() :)
+    let $search-term := 
+        if ($app:p_search)
+        then lower-case($app:p_search)
+        else ()
     let $order-by :=
         if ($app:order-param='title') 
         then 'collection($config:data-root)//tei:TEI[.//tei:idno/normalize-space(.)=$url]//tei:titleStmt/tei:title/text()'
@@ -423,7 +427,7 @@ declare %templates:wrap function app:cmif-files($node as node(), $model as map(*
     let $result := 
         if ($app:p_search)
         then 
-            for $url in collection($config:data-root)//tei:TEI[ft:query(.//tei:title, <query><wildcard>{$app:p_search}*</wildcard></query>) or ft:query(.//tei:idno, <query><wildcard>*{$app:p_search}*</wildcard></query>)]//tei:idno/normalize-space(.)
+            for $url in collection($config:data-root)//tei:TEI[ft:query(.//tei:title, <query><wildcard>{$search-term}*</wildcard></query>) or ft:query(.//tei:idno, <query><wildcard>*{$search-term}*</wildcard></query>)]//tei:idno/normalize-space(.)
             return
                 for $file in doc($config:app-root||'/data/cmif-file-index.xml')//file[@url=$url]
                 return
