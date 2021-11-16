@@ -297,6 +297,7 @@ declare variable $app:order-param := request:get-parameter('order-by', 'title');
 declare variable $app:sort-param := request:get-parameter('sort', 'asc');
 declare variable $app:p_limit := xs:int(request:get-parameter('limit', '20'));
 declare variable $app:p_offset := xs:int(request:get-parameter('offset', '1'));
+declare variable $app:p_search := request:get-parameter('search', ());
 
 declare %templates:wrap function app:cmif-files-column-header($node as node(), $model as map(*), $type as xs:string) {
     let $labels :=
@@ -320,8 +321,12 @@ declare %templates:wrap function app:cmif-files-column-header($node as node(), $
             then <i class="fas fa-sort-up"/>
             else <i class="fas fa-sort-down"/>
         else ()
+    let $search := 
+        if ($app:p_search)
+        then '&amp;search='||$app:p_search
+        else ()
     return
-    <a href="?order-by={$type}&amp;sort={$sort}">{$labels($type)}&#160;{$icon}</a>
+    <a href="?order-by={$type}&amp;sort={$sort}{$search}">{$labels($type)}&#160;{$icon}</a>
 };
 
 declare %templates:wrap function app:pagination($node as node(), $model as map(*)) {
@@ -388,7 +393,11 @@ declare %templates:wrap function app:pagination($node as node(), $model as map(*
     element div {
         attribute class {'pageNav'},
         $resultCounter,
-        $pagination
+        $pagination,
+        <form>
+            <input name="search" type="text" value="{$app:p_search}"/>
+            <input type="submit" value="Go" />
+        </form>
     }
 };
 
@@ -411,18 +420,31 @@ declare %templates:wrap function app:cmif-files($node as node(), $model as map(*
         if ($app:sort-param='asc') 
         then 'ascending' 
         else 'descending'
-    let $eval :=
-        "for $file in doc($config:app-root||'/data/cmif-file-index.xml')//file
-        let $url := $file/@url
-        order by "||$order-by||" "||$sort||" 
-        return
-        $file"
-    let $result :=
-        util:eval($eval)
-    let $result-count := count($result)
+    let $result := 
+        if ($app:p_search)
+        then 
+            for $url in collection($config:data-root)//tei:TEI[ft:query(.//tei:title, <query><wildcard>{$app:p_search}*</wildcard></query>) or ft:query(.//tei:idno, <query><wildcard>*{$app:p_search}*</wildcard></query>)]//tei:idno/normalize-space(.)
+            return
+                for $file in doc($config:app-root||'/data/cmif-file-index.xml')//file[@url=$url]
+                return
+                $file
+        else 
+            for $file in doc($config:app-root||'/data/cmif-file-index.xml')//file
+            let $url := $file/@url
+            return
+            $file
+    let $sorted-result :=
+        util:eval(
+            "for $file in $result
+            let $url := $file/@url
+            order by "||$order-by||" "||$sort||"
+            return
+            $file"
+            )
+    let $result-count := count($sorted-result)
     return
     map { 
-    "files" : subsequence($result, $app:p_offset, $app:p_limit),
+    "files" : subsequence($sorted-result, $app:p_offset, $app:p_limit),
     "result-count" : $result-count   
     }
 };

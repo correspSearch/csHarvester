@@ -548,6 +548,13 @@ div#content span.pageBrowser select {
     width: 5em;
     margin: 0 0 0 1em;
     padding: 0.2em;
+    font-family: PTSans;
+    background-color: white;
+    border: 1px solid silver;
+}
+
+div#content span.pageBrowser option {
+    font-family: PTSans;
 }
 
 span.pageBrowser img {
@@ -562,4 +569,10 @@ span.pageBrowser a:hover {
 
 span.pageBrowser span.hidden {
     display: none;
+}
+
+div.pageNav form {
+    position: absolute;
+    right: 0;
+    top: 0;
 }
