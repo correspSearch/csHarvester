@@ -6,7 +6,9 @@
                 <div class="card-body">
                     <h1 class="card-title">Registered CMIF Files</h1>
                     <div data-template="app:action-alert"/>
-                    <table class="table" data-template="app:cmif-files">
+                    <div data-template="app:cmif-files">
+                    <div data-template="app:pagination"/>
+                    <table class="table">
                         <tr>
                             <th data-template="app:cmif-files-column-header" data-template-type="title"/>
                             <th width="8%" data-template="app:cmif-files-column-header" data-template-type="letters"/>
@@ -46,6 +48,7 @@
                             <td data-template="app:cmif-file-action-delete"/>
                         </tr>
                     </table>
+                    </div>
                     <form method="post">
                         <button type="submit" class="btn cs-button" name="id" value="clear-reports">Clear all reports</button>
                         <button type="submit" class="btn cs-button" name="id" value="update-last-indexed">Update all indexed-dates from Elasticsearch</button>

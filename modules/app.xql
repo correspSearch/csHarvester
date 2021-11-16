@@ -295,6 +295,8 @@ declare %templates:wrap function app:action-entry-desc($node as node(), $model a
 
 declare variable $app:order-param := request:get-parameter('order-by', 'title');
 declare variable $app:sort-param := request:get-parameter('sort', 'asc');
+declare variable $app:p_limit := xs:int(request:get-parameter('limit', '20'));
+declare variable $app:p_offset := xs:int(request:get-parameter('offset', '1'));
 
 declare %templates:wrap function app:cmif-files-column-header($node as node(), $model as map(*), $type as xs:string) {
     let $labels :=
@@ -322,6 +324,75 @@ declare %templates:wrap function app:cmif-files-column-header($node as node(), $
     <a href="?order-by={$type}&amp;sort={$sort}">{$labels($type)}&#160;{$icon}</a>
 };
 
+declare %templates:wrap function app:pagination($node as node(), $model as map(*)) {
+    let $resultCount := $model("result-count")
+    let $numberOfPages := xs:int(ceiling($resultCount div $app:p_limit))
+    let $URLqueryString := replace(request:get-query-string(), '&amp;offset=\d\d?\d?\d?', '')
+    
+    let $labels :=
+        map { 
+            "noResult" := 1,
+            "of" := 2
+        }
+        
+    let $pageSelectBox :=
+        element select {
+            attribute onchange { 'location = this.options[this.selectedIndex].value;'},
+            if ($numberOfPages = 1)
+            then (attribute disabled {'disabled'} )
+            else (),
+            for $x in (1 to $numberOfPages)
+            return
+            if ($x = ceiling($app:p_offset div $app:p_limit))
+            then (element option { attribute selected { '' }, attribute value { concat('?', $URLqueryString, '&amp;offset=', ((($x - 1) * $app:p_limit) + 1)) }, $x })
+            else (element option { attribute value { concat('?', $URLqueryString, '&amp;offset=', ((($x - 1) * $app:p_limit) + 1)) }, $x })
+        }
+
+    let $pagination :=
+        element span {
+            attribute class { 'pageBrowser' },
+            if ($pageSelectBox//option[@selected]/preceding-sibling::option)
+            then (
+                element a { attribute href { $pageSelectBox//option[@selected]/preceding-sibling::option[last()]/@value }, <i class="fa fa-angle-double-left"><span class="hidden">first</span></i> },
+                element a { attribute href { $pageSelectBox//option[@selected]/preceding-sibling::option[1]/@value }, <i class="fa fa-angle-left"><span class="hidden">prev</span></i> }
+            )
+            else (
+                <i class="fa fa-angle-double-left"><span class="hidden">first</span></i>,
+                <i class="fa fa-angle-left"><span class="hidden">prev</span></i>
+            ),
+            $pageSelectBox,
+            if ($pageSelectBox//option[@selected]/following-sibling::option)
+            then (
+                element a { attribute href { $pageSelectBox//option[@selected]/following-sibling::option[1]/@value }, <i class="fa fa-angle-right"><span class="hidden">next</span></i> },
+                element a { attribute href { $pageSelectBox//option[@selected]/following-sibling::option[last()]/@value }, <i class="fa fa-angle-double-right"><span class="hidden">last</span></i> })
+            else (
+                <i class="fa fa-angle-right"><span class="hidden">next</span></i>,
+                <i class="fa fa-angle-double-right"><span class="hidden">last</span></i>
+            )
+        }
+    
+    let $resultCounter :=
+            if ($resultCount = 0)
+                then ($labels('noResult'))
+                else (
+                    if ($resultCount <= $app:p_limit)
+                    then (element span { attribute class {'resultcount'}, concat($resultCount, ' ', 'CMIF files') })
+                    else (
+                        if ($pagination//select/option[position()=last()]/@selected)
+                        then (element span { attribute class {'resultcount'}, concat('CMIF files', ' ', $app:p_offset, '-', $resultCount, ' of ', $resultCount) } )
+                        else (element span { attribute class {'resultcount'}, concat('CMIF files', ' ', $app:p_offset, '-', ($app:p_offset + $app:p_limit - 1), ' of ', $resultCount)} )
+                    )
+                )
+
+    return
+    element div {
+        attribute class {'pageNav'},
+        $resultCounter,
+        $pagination
+    }
+};
+
+
 declare %templates:wrap function app:cmif-files($node as node(), $model as map(*)) as map(*) {
     (: Variables order-by ist Grund für Konstruktion mit util:eval() :)
     let $order-by :=
@@ -342,14 +413,17 @@ declare %templates:wrap function app:cmif-files($node as node(), $model as map(*
         else 'descending'
     let $eval :=
         "for $file in doc($config:app-root||'/data/cmif-file-index.xml')//file
-         let $url := $file/@url
-         order by "||$order-by||" "||$sort||" 
-         return
-         $file"
+        let $url := $file/@url
+        order by "||$order-by||" "||$sort||" 
+        return
+        $file"
+    let $result :=
+        util:eval($eval)
+    let $result-count := count($result)
     return
     map { 
-    "files" := 
-        util:eval($eval)
+    "files" : subsequence($result, $app:p_offset, $app:p_limit),
+    "result-count" : $result-count   
     }
 };
 

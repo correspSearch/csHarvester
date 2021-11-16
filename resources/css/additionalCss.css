@@ -517,3 +517,49 @@ a.alert-color {
 a.warning-color {
     color: #ffa100;
 }
+
+/* PAGEBROWSER */
+div.pageNav {
+    position: relative;
+    height: 2.5em;
+    font-size: 0.8em;
+}
+
+span.resultcount {
+    font-family: PTSans;
+    color: gray;
+}
+
+span.pageBrowser {
+    position: absolute;
+    top: 0;
+    left: 38%;
+}
+
+span.pageBrowser a,
+span.pageBrowser > i {
+    position: relative;
+    display: inline-block;
+    margin: 0 0 0 1em;
+}
+
+
+div#content span.pageBrowser select {
+    width: 5em;
+    margin: 0 0 0 1em;
+    padding: 0.2em;
+}
+
+span.pageBrowser img {
+    height: 14px;
+    vertical-align: top;
+    margin: 2px 0 0 0;
+}
+
+span.pageBrowser a:hover {
+    text-decoration: none;
+}
+
+span.pageBrowser span.hidden {
+    display: none;
+}
