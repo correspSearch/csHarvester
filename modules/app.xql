@@ -293,8 +293,64 @@ declare %templates:wrap function app:action-entry-desc($node as node(), $model a
 
 (: Registered CMIF files :)
 
+declare variable $app:order-param := request:get-parameter('order-by', 'title');
+declare variable $app:sort-param := request:get-parameter('sort', 'asc');
+
+declare %templates:wrap function app:cmif-files-column-header($node as node(), $model as map(*), $type as xs:string) {
+    let $labels :=
+        map {
+            'title' : 'Title',
+            'letters' : 'Letters',
+            'modified' : 'Modified',
+            'harvested' : 'Harvested',
+            'indexed' : 'Indexed'
+        }
+    let $sort := 
+        if ($app:order-param=$type and $app:sort-param='asc')
+        then 'desc'
+        else if ($app:order-param=$type and $app:sort-param='desc')
+        then 'asc'
+        else 'desc'
+    let $icon :=
+        if ($app:order-param=$type)
+        then 
+            if ($sort='asc')
+            then <i class="fas fa-sort-up"/>
+            else <i class="fas fa-sort-down"/>
+        else ()
+    return
+    <a href="?order-by={$type}&amp;sort={$sort}">{$labels($type)}&#160;{$icon}</a>
+};
+
 declare %templates:wrap function app:cmif-files($node as node(), $model as map(*)) as map(*) {
-    map { "files" := doc($config:app-root||'/data/cmif-file-index.xml')//file }
+    (: Variables order-by ist Grund für Konstruktion mit util:eval() :)
+    let $order-by :=
+        if ($app:order-param='title') 
+        then 'collection($config:data-root)//tei:TEI[.//tei:idno/normalize-space(.)=$url]//tei:titleStmt/tei:title/text()'
+        else if ($app:order-param='letters') 
+        then 'count(collection($config:data-root)//tei:TEI[.//tei:idno/normalize-space(.)=$url]//tei:correspDesc)'
+        else if ($app:order-param='indexed') 
+        then '$file/@last-indexed'
+        else if ($app:order-param='modified') 
+        then 'collection($config:data-root)//tei:TEI[.//tei:idno/normalize-space(.)=$url]//tei:publicationStmt/tei:date/@when'
+        else if ($app:order-param='harvested') 
+        then '$file/@last-harvested'
+        else ()
+    let $sort := 
+        if ($app:sort-param='asc') 
+        then 'ascending' 
+        else 'descending'
+    let $eval :=
+        "for $file in doc($config:app-root||'/data/cmif-file-index.xml')//file
+         let $url := $file/@url
+         order by "||$order-by||" "||$sort||" 
+         return
+         $file"
+    return
+    map { 
+    "files" := 
+        util:eval($eval)
+    }
 };
 
 declare %templates:wrap function app:cmif-file-url($node as node(), $model as map(*)) {
@@ -375,7 +431,7 @@ declare %templates:wrap function app:cmif-file-indexed($node as node(), $model a
 
 declare %templates:wrap function app:cmif-file-error($node as node(), $model as map(*)) {
     let $url := $model("file")/@url/data(.)
-    let $last-action := $csharv:log//action[.//@url=$url][last()]
+    let $last-action := $csharv:log//action[./status/@url=$url][last()]
     let $last-action-id := $last-action/@id/data(.)
     let $error := $last-action/error[@url=$url]
     return
