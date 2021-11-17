@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<package xmlns="http://expath.org/ns/pkg" name="https://correspSearch.net/apps/harvester" abbrev="csHarvester" version="0.7" spec="1.0">
+<package xmlns="http://expath.org/ns/pkg" name="https://correspSearch.net/apps/harvester" abbrev="csHarvester" version="1.0" spec="1.0">
     <title>csHarvester</title>
     <dependency package="http://exist-db.org/apps/shared"/>
 </package>

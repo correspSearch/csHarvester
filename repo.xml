@@ -1,15 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <meta xmlns="http://exist-db.org/xquery/repo">
     <description>csHarvester</description>
     <author>Stefan Dumont</author>
     <website/>
-    <status>beta</status>
+    <status>stable</status>
     <license>GNU-LGPL</license>
     <copyright>true</copyright>
     <type>application</type>
     <target>csHarvester</target>
     <prepare>pre-install.xql</prepare>
     <finish/>
-    <permissions user="csHarvester" group="csHarvester" mode="rw-rw----"/>
-<deployed>2019-11-29T12:37:22.941+01:00</deployed>
+    <permissions user="csHarvester" password="" group="csHarvester" mode="rwxr-x---"/>
 </meta>
