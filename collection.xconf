@@ -5,6 +5,8 @@
             <analyzer id="ws" class="org.apache.lucene.analysis.core.WhitespaceAnalyzer"/>
             <text qname="tei:idno"/>
             <text qname="tei:title"/>
+            <!-- für csAPI -->
+            <text qname="@ref" analyzer="ws"/>
         </lucene>
         <range>
             <create qname="tei:idno" type="xs:string"/>
