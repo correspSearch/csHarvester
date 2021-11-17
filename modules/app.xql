@@ -131,10 +131,12 @@ declare %templates:wrap function app:last-registered($node as node(), $model as 
 
 declare %templates:wrap function app:last-modified($node as node(), $model as map(*)) as map(*) {
     map { "teis" := 
-            for $file in collection($csharv:data)//tei:TEI[position() < 10]
+            subsequence(
+            for $file in collection($csharv:data)//tei:TEI
             order by $file//tei:publicationStmt/tei:date/@when descending
             return
-            $file
+            $file,
+            1, 5)
     }
 };
 
