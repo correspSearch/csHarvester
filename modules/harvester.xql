@@ -284,6 +284,12 @@ declare function csharv:check($elements as element()*) as xs:boolean {
 
 (: Tests for registering AND updating :)
 
+declare function csharv:url($url as xs:string) as xs:anyURI {
+    let $url := replace($url, 'ä', encode-for-uri('ä'))
+    return
+    xs:anyURI($url)
+};
+
 declare function csharv:checkIfRegistered($url as xs:string) as xs:boolean {
     let $test :=
         if ($csharv:cmif-file-index//file/@url=$url)
@@ -316,7 +322,7 @@ declare function csharv:checkURL($url as xs:string) as xs:boolean {
 };
 
 declare function csharv:checkStatusCode($url as xs:string) as xs:boolean {
-    let $request := httpclient:head($url, true(), ())
+    let $request := httpclient:head(csharv:url($url), true(), ())
     let $test :=
         if ($request/@statusCode='200')
         then <trace url="{$url}">Status code: 200</trace>
@@ -332,7 +338,7 @@ declare function csharv:checkHTTP304($url as xs:string) as xs:boolean {
     let $adjusted-date := fn:adjust-dateTime-to-timezone(xs:dateTime($last-harvested), xs:dayTimeDuration("-PT0H"))
     let $http-date := format-dateTime($adjusted-date, "[FNn, *-3], [D] [MNn, *-3] [Y] [H]:[m]:[s] GMT", "en", (), ())
     let $params := <headers><header name="If-Modified-Since" value="{$http-date}"></header></headers>
-    let $request := httpclient:head($url, true(), $params)
+    let $request := httpclient:head(csharv:url($url), true(), $params)
     let $test :=
         if ($csharv:force="yes" and $request//@statusCode="304")
         then <trace url="{$url}">Not modified (HTTP-Header 304) but update forced.</trace>
@@ -347,7 +353,7 @@ declare function csharv:checkHTTP304($url as xs:string) as xs:boolean {
 };
 
 declare function csharv:getFile($url) as element() {
-    httpclient:get($url, true(), ())
+    httpclient:get(csharv:url($url), true(), ())
 };
 
 declare function csharv:getTEI($url) as element()* {
@@ -356,7 +362,7 @@ declare function csharv:getTEI($url) as element()* {
     let $test :=
         if ($tei)
         then $tei
-        else xmldb:store($csharv:logs, $filename, httpclient:get($url, true(), ()))
+        else xmldb:store($csharv:logs, $filename, httpclient:get(csharv:url($url), true(), ()))
     return
     $tei
 };
@@ -426,8 +432,11 @@ declare function local:cleanFileName($url as xs:string) as xs:string {
     let $replace4 := replace($replace3, ':', '_')
     let $replace5 := replace($replace4, '.xql', '')
     let $replace6 := replace($replace5, '.xml', '')
+    let $replace7 := replace($replace6, 'ä', 'ae')
+    let $replace8 := replace($replace7, 'ü', 'ue')
+    let $replace9 := replace($replace8, 'ö', 'oe')
     return
-    $replace6||'.xml'
+    $replace9||'.xml'
 };
 
 declare function csharv:insert-file-entry($url as xs:string) {
