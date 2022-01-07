@@ -18,7 +18,7 @@ for the purpose of the project ["correspSearch - Connect scholarly editions of l
 
 ## License
 
-Copyright (C) 2019 Berlin-Brandenburg Academy of Sciences and Humanities.
+Copyright (C) 2019–2022 Berlin-Brandenburg Academy of Sciences and Humanities.
 
 csHarvester is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License v3 as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 

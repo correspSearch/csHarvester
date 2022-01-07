@@ -1,0 +1,17 @@
+message: "If you use this software, please cite it using these metadata."
+authors:
+  - family-names: Dumont
+    given-names: Stefan
+    orcid: "https://orcid.org/0000-0002-6923-0950"
+title: csHarvester 
+abstract: "Xquery application based on existdb for harvesting CMIF files for correspSearch"
+type: software
+date-released: "2022-01-07"
+version: 1.0.0
+repository-code: "https://github.com/correspSearch/csHarvester"
+license: "GPL-3.0"
+url: "https://correspsearch.net"
+contact:
+  - email: correspSearch@bbaw.de
+    name: "correspSearch - Connecting Scholarly Editions of Correspondence"
+cff-version: 1.2.0
