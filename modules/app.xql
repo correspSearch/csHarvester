@@ -484,6 +484,12 @@ declare %templates:wrap function app:cmif-file-title($node as node(), $model as 
             attribute href { 'https://correspsearch.net/de/suche.html?c='||$url },
             attribute target {'_blank' },
             <i class="fas fa-search" title="Show CMIF file in search result" />
+        },
+        '&#160;',
+        element a {
+            attribute href { 'rss-snippet.xql?url='||$url },
+            attribute target {'_blank' },
+            <i class="fas fa-rss" title="Show RSS feed snippet for announcement" />
         }
         )
 };
